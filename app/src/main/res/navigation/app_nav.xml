@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_nav"
+    app:startDestination="@id/homeFragment">
+
+    <activity
+        android:id="@+id/loginActivity"
+        android:name="com.example.module_login.LoginActivity"
+        android:label="LoginActivity"
+        tools:layout="@layout/login_activity_login"/>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.miaozhi.HomeFragment"
+        android:label="app_fragment_content"
+        tools:layout="@layout/app_fragment_content" >
+        <action
+            android:id="@+id/action_homeFragment_to_loginActivity"
+            app:destination="@id/loginActivity" />
+    </fragment>
+</navigation>

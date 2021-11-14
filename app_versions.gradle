@@ -1,0 +1,81 @@
+//Android 代码块的内容
+def Android = [:]
+Android.CompileSdk = 31
+ext.Android = Android
+
+//DefaultConfig代码内部的内容
+def DefaultConfig = [:]
+DefaultConfig.MinSdk = 21
+DefaultConfig.TargetSdk = 31
+DefaultConfig.VersionCode = 1
+DefaultConfig.VersionName = "1.0"
+Android.DefaultConfig = DefaultConfig
+
+//KotlinOptions
+def KotlinOptions = [:]
+KotlinOptions.JvmTarget = "1.8"
+Android.KotlinOptions = KotlinOptions
+
+//CompileOptions
+def CompileOptions = [:]
+CompileOptions.SourceCompatibility = JavaVersion.VERSION_1_8
+CompileOptions.TargetCompatibility = JavaVersion.VERSION_1_8
+Android.CompileOptions = CompileOptions
+
+def hiltVersion = "2.36"
+def navigationVersion = "2.3.5"
+def okhttpVersion = "4.9.2"
+def retrofitVersion = "2.9.0"
+def gsonVersion = "2.8.9"
+def glideVersion = "4.12.0"
+//基础依赖库
+def baseDependency = [
+        //Ktx Core
+        'androidx.core:core-ktx:1.6.0',
+        //Activity
+        'androidx.appcompat:appcompat:1.3.1',
+        //Material
+        'com.google.android.material:material:1.4.0',
+        //ConstrainLayout
+        'androidx.constraintlayout:constraintlayout:2.1.1',
+        //Ktx扩展
+        'androidx.fragment:fragment-ktx:1.3.6',
+        //Hilt
+        "com.google.dagger:hilt-android:$hiltVersion",
+        //Navigation
+        "androidx.navigation:navigation-fragment-ktx:$navigationVersion" ,
+        "androidx.navigation:navigation-ui-ktx:$navigationVersion",
+        //Okhttp
+        "com.squareup.okhttp3:okhttp:$okhttpVersion",
+        "com.squareup.okhttp3:logging-interceptor:$okhttpVersion",
+        //Retrofit
+        "com.squareup.retrofit2:retrofit:$retrofitVersion",
+        "com.squareup.retrofit2:converter-gson:$retrofitVersion",
+        //Gson
+        "com.google.code.gson:gson:$gsonVersion",
+        //Glide
+        "com.github.bumptech.glide:glide:$glideVersion",
+]
+
+def kaptDependency = [
+        //Hilt
+        "com.google.dagger:hilt-android-compiler:$hiltVersion",
+]
+
+def annotationDependency = [
+        //Glide
+        "com.github.bumptech.glide:compiler:$glideVersion"
+]
+//测试库
+def testDependency = [
+        "junit":"junit:junit:4.+",
+        "androidJunit":"androidx.test.ext:junit:1.1.2",
+        "espresso":"androidx.test.espresso:espresso-core:3.3.0"
+]
+
+ext.baseDependency = baseDependency
+ext.testDependency = testDependency
+ext.kaptDependency = kaptDependency
+ext.annotationDependency = annotationDependency
+
+//额外的库

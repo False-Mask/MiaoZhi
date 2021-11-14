@@ -1,0 +1,12 @@
+apply from: config
+dependencies {
+    api files('libs/BLEasyConfig.jar')
+    api files('libs/easylink2.0.jar')
+    api files('libs/easylinkv3-0.2.6.jar')
+    api files('libs/GizWifiSDK.jar')
+    api files('libs/Lark7618SDK_noudp1606031910_0101.jar')
+    api files('libs/libForEElink.jar')
+    api files('libs/ltlink2.jar')
+    api files('libs/OneShotConfig.jar')
+    api files('libs/zxing.jar')
+}

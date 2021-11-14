@@ -1,0 +1,75 @@
+if (isDebug.toBoolean() && name.matches("module_.+") ||
+        name.matches("app")) {
+    apply plugin: "com.android.application"
+} else {
+    apply plugin: "com.android.library"
+}
+apply plugin: 'kotlin-kapt'
+apply plugin: "kotlin-android"
+apply plugin: 'dagger.hilt.android.plugin'
+
+android {
+    compileSdk Android.CompileSdk
+
+    //默认配置选项
+    defaultConfig {
+        if (isDebug.toBoolean() && name.matches("module_.+") || name.matches("app")) {
+            applicationId "com.example.miaozhi"
+        }
+        minSdk Android.DefaultConfig.MinSdk
+        targetSdk Android.DefaultConfig.TargetSdk
+        versionCode Android.DefaultConfig.VersionCode
+        versionName Android.DefaultConfig.VersionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    //Manifest位置
+    sourceSets {
+            if (name.matches("module_.+")) {
+                if (isDebug.toBoolean()) {
+                    main{
+                        manifest.srcFile 'src/main/module/AndroidManifest.xml'
+                    }
+                    //main.manifest.srcFile 'src/main/module/AndroidManifest.xml'
+                }
+            }
+            /*java{
+                exclude "debug/**"
+            }*/
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility Android.CompileOptions.SourceCompatibility
+        targetCompatibility Android.CompileOptions.TargetCompatibility
+    }
+    kotlinOptions {
+        jvmTarget = Android.KotlinOptions.JvmTarget
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    //基础库
+    implementation baseDependency
+    kapt kaptDependency
+    annotationProcessor annotationDependency
+    testImplementation testDependency.junit
+    androidTestImplementation testDependency.androidJunit
+    androidTestImplementation testDependency.espresso
+    //module基础依赖包
+    if (name.matches("module_.+") || name.matches("app")) {
+        //基础包
+        implementation project(":lib_common")
+        implementation project(":lib_base")
+    }
+}

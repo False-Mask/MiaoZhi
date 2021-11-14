@@ -1,0 +1,6 @@
+apply from: config
+apply plugin: 'kotlin-android'
+dependencies {
+    implementation project(":module_login")
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+}

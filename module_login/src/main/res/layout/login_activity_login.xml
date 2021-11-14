@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_login_logo"
+        android:layout_width="300dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toTopOf="@id/et_phone"
+        app:layout_constraintDimensionRatio="w,1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:srcCompat="@drawable/ic_login_logo" />
+
+    <EditText
+        android:id="@+id/et_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="@dimen/login_margin_dimension"
+        android:background="@drawable/shape_et_round"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/login_edit_input_hint"
+        android:inputType="phone"
+        android:maxLength="11"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_login_regist"
+        app:layout_constraintEnd_toEndOf="@+id/iv_login_logo"
+        app:layout_constraintStart_toStartOf="@+id/iv_login_logo"
+        app:layout_constraintTop_toBottomOf="@+id/iv_login_logo"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <Button
+        android:id="@+id/btn_login_regist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/login_margin_dimension"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="@dimen/login_margin_dimension"
+        android:background="@drawable/shape_btn_round"
+        android:text="@string/login_login_or_regist"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_guest"
+        app:layout_constraintEnd_toEndOf="@+id/et_phone"
+        app:layout_constraintStart_toStartOf="@+id/et_phone"
+        app:layout_constraintTop_toBottomOf="@+id/et_phone" />
+
+    <Button
+        android:id="@+id/btn_guest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/login_margin_dimension"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="@dimen/login_margin_dimension"
+        android:background="@drawable/shape_btn_round"
+        android:text="@string/login_guest_pattern"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btn_login_regist"
+        app:layout_constraintStart_toStartOf="@+id/btn_login_regist"
+        app:layout_constraintTop_toBottomOf="@+id/btn_login_regist" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
