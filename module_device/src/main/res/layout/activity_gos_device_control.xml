@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/header_toolbar" />
+    
+	<ScrollView 
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:background="@color/background_color"
+	    android:fadingEdge="vertical"
+	    android:paddingBottom="10dp"
+	    android:paddingTop="20dp"
+	    android:scrollbars="vertical" >
+
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="vertical"
+	        android:scrollbars="vertical" >
+	        
+			
+            <!-- 开启/关闭红色灯(布尔可写) -->
+			 <RelativeLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginBottom="1dp"
+					android:background="@color/white"
+					android:padding="10dp" >
+			 
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="match_parent"
+						android:layout_centerVertical="true"
+						android:text="开启/关闭红色灯" />
+
+					<Switch
+						android:id="@+id/sw_bool_LED_OnOff"
+						android:layout_width="wrap_content"
+						android:layout_height="match_parent"
+						android:layout_alignParentRight="true"
+						android:layout_centerVertical="true"
+						android:textOff="关闭"
+						android:textOn="开启" />
+						
+			</RelativeLayout>	
+	
+			
+            <!-- 设定电机转速(数值可写) -->
+			 <RelativeLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginBottom="1dp"
+					android:background="@color/white"
+					android:padding="10dp" >
+			 
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="match_parent"
+						android:text="设定电机转速" />
+					
+					<TextView
+						android:id="@+id/tv_data_Motor_Speed"
+						android:layout_width="110dp"
+						android:layout_height="wrap_content"
+						android:layout_alignParentRight="true"
+						android:textSize="16sp"
+						android:gravity="end" />	
+										
+					<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_below="@+id/tv_data_Motor_Speed"
+						android:layout_marginTop="10dp"
+						android:gravity="center_vertical"
+						android:orientation="horizontal" >
+
+						<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:textSize="16sp"
+							android:text="-5" />
+							
+						<SeekBar
+							android:id="@+id/sb_data_Motor_Speed"
+							android:layout_width="0dp"
+							android:layout_height="wrap_content"
+							android:layout_weight="3"
+							android:max="10" />
+						
+						<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:textSize="16sp"
+							android:text="5" />
+					</LinearLayout>
+				
+			</RelativeLayout>			
+	
+			
+            <!-- 红外探测(布尔只读) -->
+			 <RelativeLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginBottom="1dp"
+					android:background="@color/white"
+					android:padding="10dp" >
+			 
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="match_parent"
+						android:layout_centerVertical="true"
+						android:text="红外探测" />
+
+					<Switch
+						android:id="@+id/sw_bool_Infrared"
+						android:layout_width="wrap_content"
+						android:layout_height="match_parent"
+						android:layout_alignParentRight="true"
+						android:layout_centerVertical="true"
+						android:textOff="关闭"
+						android:textOn="开启" />
+						
+			</RelativeLayout>	
+	
+			
+            <!-- 环境温度(数值只读) -->
+			 <RelativeLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginBottom="1dp"
+					android:background="@color/white"
+					android:padding="10dp" >
+			 
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="match_parent"
+						android:layout_centerVertical="true"
+						android:text="环境温度" />
+
+					<TextView
+						android:id="@+id/tv_data_Temperature"
+						android:layout_width="110dp"
+						android:layout_height="match_parent"
+						android:layout_alignParentRight="true"
+						android:layout_centerVertical="true"
+						android:gravity="end"
+						android:textSize="16sp"
+						android:textColor="@color/gray" />	
+			</RelativeLayout>
+	
+			
+            <!-- 环境湿度(数值只读) -->
+			 <RelativeLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginBottom="1dp"
+					android:background="@color/white"
+					android:padding="10dp" >
+			 
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="match_parent"
+						android:layout_centerVertical="true"
+						android:text="环境湿度" />
+
+					<TextView
+						android:id="@+id/tv_data_Humidity"
+						android:layout_width="110dp"
+						android:layout_height="match_parent"
+						android:layout_alignParentRight="true"
+						android:layout_centerVertical="true"
+						android:gravity="end"
+						android:textSize="16sp"
+						android:textColor="@color/gray" />	
+			</RelativeLayout>
+	
+	
+	
+	
+	
+	
+	
+		
+	    </LinearLayout>
+
+	</ScrollView>
+</LinearLayout>

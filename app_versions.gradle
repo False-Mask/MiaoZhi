@@ -1,12 +1,12 @@
 //Android 代码块的内容
 def Android = [:]
-Android.CompileSdk = 31
+Android.CompileSdk = 30
 ext.Android = Android
 
 //DefaultConfig代码内部的内容
 def DefaultConfig = [:]
 DefaultConfig.MinSdk = 21
-DefaultConfig.TargetSdk = 31
+DefaultConfig.TargetSdk = 30
 DefaultConfig.VersionCode = 1
 DefaultConfig.VersionName = "1.0"
 Android.DefaultConfig = DefaultConfig

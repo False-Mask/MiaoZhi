@@ -12,6 +12,14 @@
         android:theme="@style/Theme.Design.Light.NoActionBar">
         <activity
             android:name=".MainActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="com.example.miaozhi.main"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
