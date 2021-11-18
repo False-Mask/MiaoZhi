@@ -64,5 +64,9 @@ class MainFragment : Fragment() {
         }
     }
 
+    companion object{
+        val INSTANCE = MainFragment()
+    }
+
 
 }

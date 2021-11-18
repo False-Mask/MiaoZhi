@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/app_nav"
-    app:startDestination="@id/mainFragment">
+    app:startDestination="@id/menu_main">
     <fragment
-        android:id="@+id/mainFragment"
+        android:id="@+id/menu_main"
         android:name="com.example.module_main.ui.fragment.MainFragment"
         android:label="MainFragment"
         tools:layout="@layout/main_activity_main"/>
     <fragment
-        android:id="@+id/gosDeviceListFragment"
+        android:id="@+id/menu_device"
         android:name="com.example.module_device.GosDeviceListFragment"
         android:label="GosDeviceListFragment"
         tools:layout="@layout/activity_gos_device_list"/>

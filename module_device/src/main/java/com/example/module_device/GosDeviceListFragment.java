@@ -65,6 +65,9 @@ import java.util.TimerTask;
 @SuppressLint("HandlerLeak")
 public class GosDeviceListFragment extends GosDeviceModuleBaseFragment implements SwipeRefreshLayout.OnRefreshListener {
 
+
+    public static GosDeviceListFragment INSTANCE = new GosDeviceListFragment();
+
     /**
      * The ll NoDevice
      */

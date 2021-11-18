@@ -205,6 +205,7 @@ public class GosChooseDeviceWorkWiFiActivity extends GosConfigModuleBaseActivity
                 //Intent intent = new Intent(this, GosMainActivity.class);
                 //startActivity(intent);
                 //quitAlert(this, intent);
+                finish();
                 break;
         }
         return true;
@@ -385,17 +386,6 @@ public class GosChooseDeviceWorkWiFiActivity extends GosConfigModuleBaseActivity
         return false;
     }
 
-    // 屏蔽掉返回键
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            //Intent intent = new Intent(this, GosMainActivity.class);
-            //startActivity(intent);
-            //quitAlert(this, intent);
-            return true;
-        }
-        return false;
-    }
 
     class WifiListAdapter extends BaseAdapter {
 

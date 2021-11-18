@@ -89,7 +89,7 @@ public class GosBaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        getWindow().setStatusBarColor(getResources().getColor(R.color.color_primary));
         /**
          * 设置为竖屏
          */
@@ -122,7 +122,7 @@ public class GosBaseActivity extends AppCompatActivity {
      * @param Title
      */
     public void setToolBar(boolean isIcon, int Title) {
-        mToolbar = initToolbar();
+        mToolbar = produceToolbar();
         mToolbar.setTitle("");
         setSupportActionBar(mToolbar);
         tvTitle = (TextView) findViewById(R.id.tvTitle);
@@ -139,7 +139,7 @@ public class GosBaseActivity extends AppCompatActivity {
         }
     }
 
-    public Toolbar initToolbar() {
+    public Toolbar produceToolbar() {
         return findViewById(R.id.toolbar);
     }
 

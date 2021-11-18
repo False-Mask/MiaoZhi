@@ -14,9 +14,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fcv_content"
-        android:name="androidx.navigation.fragment.NavHostFragment"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vp_content"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:defaultNavHost="true"
@@ -24,8 +23,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include"
-        app:navGraph="@navigation/nav_app" />
+        app:layout_constraintTop_toBottomOf="@+id/include" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bnv_bottom_menu"

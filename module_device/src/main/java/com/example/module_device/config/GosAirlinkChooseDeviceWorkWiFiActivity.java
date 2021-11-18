@@ -370,17 +370,6 @@ public class GosAirlinkChooseDeviceWorkWiFiActivity extends GosConfigModuleBaseA
      * "").equals(workSSID)) { return true; } } return false; }
      */
 
-    // 屏蔽掉返回键
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            //Intent intent = new Intent(this, GosMainActivity.class);
-            //startActivity(intent);
-            //quitAlert(this, intent);
-            return true;
-        }
-        return false;
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -389,6 +378,7 @@ public class GosAirlinkChooseDeviceWorkWiFiActivity extends GosConfigModuleBaseA
 //                Intent intent = new Intent(this, GosMainActivity.class);
 //                startActivity(intent);
                 //quitAlert(this, intent);
+                finish();
                 break;
         }
 
