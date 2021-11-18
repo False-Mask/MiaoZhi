@@ -15,7 +15,8 @@
             android:layout_height="280dp" android:gravity="center_vertical"
             android:paddingLeft="85dp" android:paddingRight="85dp" android:paddingTop="50dp">
 
-            <com.example.module_device.view.RoundProgressBar android:id="@+id/rpbConfig"
+            <com.example.module_device.view.RoundProgressBar
+                android:id="@+id/rpbConfig"
                 android:layout_width="match_parent" android:layout_height="match_parent"
                 android:layout_centerInParent="true" android:layout_marginLeft="16dp" />
         </RelativeLayout>

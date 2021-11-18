@@ -3,9 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Code/Android/Up/MiaoZhi/app/src/main/res/drawable/ic_app_main.xml" value="0.2361111111111111" />
         <entry key="..\:/Code/Android/Up/MiaoZhi/app/src/main/res/layout/activity_main.xml" value="0.2557291666666667" />
+        <entry key="..\:/Code/Android/Up/MiaoZhi/app/src/main/res/layout/activity_splash.xml" value="0.22175925925925927" />
         <entry key="..\:/Code/Android/Up/MiaoZhi/app/src/main/res/layout/app_fragment_content.xml" value="0.23125" />
+        <entry key="..\:/Code/Android/Up/MiaoZhi/app/src/main/res/menu/app_menu.xml" value="0.22175925925925927" />
+        <entry key="..\:/Code/Android/Up/MiaoZhi/app/src/main/res/menu/menu_app.xml" value="0.22175925925925927" />
+        <entry key="..\:/Code/Android/Up/MiaoZhi/lib_common/src/main/res/drawable/thumb.xml" value="0.2361111111111111" />
+        <entry key="..\:/Code/Android/Up/MiaoZhi/lib_common/src/main/res/layout/alert_gos_quit.xml" value="0.10817524841915085" />
         <entry key="..\:/Code/Android/Up/MiaoZhi/module_device/src/main/res/drawable/alert_bottom_left_shape.xml" value="0.12777777777777777" />
+        <entry key="..\:/Code/Android/Up/MiaoZhi/module_device/src/main/res/drawable/border_layer_list.xml" value="0.2361111111111111" />
+        <entry key="..\:/Code/Android/Up/MiaoZhi/module_device/src/main/res/drawable/common_page_back_button.xml" value="0.2361111111111111" />
         <entry key="..\:/Code/Android/Up/MiaoZhi/module_device/src/main/res/layout/activity_device_item.xml" value="0.1" />
         <entry key="..\:/Code/Android/Up/MiaoZhi/module_device/src/main/res/layout/activity_gos_airlink_choose_device_workwifi.xml" value="0.11342592592592593" />
         <entry key="..\:/Code/Android/Up/MiaoZhi/module_device/src/main/res/layout/activity_gos_airlink_config_countdown.xml" value="0.11805555555555555" />
@@ -14,6 +22,7 @@
         <entry key="..\:/Code/Android/Up/MiaoZhi/module_device/src/main/res/layout/activity_gos_config_countdown.xml" value="0.11805555555555555" />
         <entry key="..\:/Code/Android/Up/MiaoZhi/module_device/src/main/res/layout/activity_gos_config_failed.xml" value="0.1" />
         <entry key="..\:/Code/Android/Up/MiaoZhi/module_device/src/main/res/layout/activity_gos_device_control.xml" value="0.11342592592592593" />
+        <entry key="..\:/Code/Android/Up/MiaoZhi/module_device/src/main/res/layout/activity_gos_device_list.xml" value="0.14855072463768115" />
         <entry key="..\:/Code/Android/Up/MiaoZhi/module_device/src/main/res/layout/activity_gos_device_ready.xml" value="0.11805555555555555" />
         <entry key="..\:/Code/Android/Up/MiaoZhi/module_device/src/main/res/layout/activity_gos_modelist.xml" value="0.11805555555555555" />
         <entry key="..\:/Code/Android/Up/MiaoZhi/module_device/src/main/res/layout/actvity_gos_airlink_ready.xml" value="0.11805555555555555" />
@@ -31,12 +40,13 @@
         <entry key="..\:/Code/Android/Up/MiaoZhi/module_device/src/main/res/layout/item_gos_wifi_list.xml" value="0.11342592592592593" />
         <entry key="..\:/Code/Android/Up/MiaoZhi/module_device/src/main/res/layout/layout_recycler_keyboard_view.xml" value="0.11805555555555555" />
         <entry key="..\:/Code/Android/Up/MiaoZhi/module_device/src/main/res/layout/view_gos_title_listview.xml" value="0.1" />
-        <entry key="..\:/Code/Android/Up/MiaoZhi/module_device/src/main/res/menu/gosnull.xml" value="0.1" />
+        <entry key="..\:/Code/Android/Up/MiaoZhi/module_device/src/main/res/menu/gosnull.xml" value="0.4" />
         <entry key="..\:/Code/Android/Up/MiaoZhi/module_login/src/main/res/drawable/ic_launcher_background.xml" value="0.24739583333333334" />
         <entry key="..\:/Code/Android/Up/MiaoZhi/module_login/src/main/res/drawable/shape_btn_round.xml" value="0.24739583333333334" />
         <entry key="..\:/Code/Android/Up/MiaoZhi/module_login/src/main/res/drawable/shape_et_round.xml" value="0.24739583333333334" />
         <entry key="..\:/Code/Android/Up/MiaoZhi/module_login/src/main/res/layout/login_activity_login.xml" value="0.264" />
         <entry key="..\:/Code/Android/Up/MiaoZhi/module_main/src/main/res/layout/main_activity_main.xml" value="0.22175925925925927" />
+        <entry key="..\:/Code/Android/Up/MiaoZhi/module_main/src/main/res/layout/main_fragment_main.xml" value="0.14855072463768115" />
         <entry key="..\:/Code/Android/Up/MiaoZhi/module_main/src/main/res/layout/main_item_bvp_samll.xml" value="0.1" />
         <entry key="..\:/Code/Android/Up/MiaoZhi/module_main/src/main/res/layout/main_item_bvp_small_pager.xml" value="0.22175925925925927" />
         <entry key="..\:/Code/Android/Up/MiaoZhi/module_main/src/main/res/layout/main_item_func.xml" value="0.4" />

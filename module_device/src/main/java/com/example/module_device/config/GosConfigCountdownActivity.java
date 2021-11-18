@@ -20,8 +20,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.module_device.GosConstant;
 import com.example.module_device.R;
-import com.example.module_device.base.GosConstant;
 import com.example.module_device.common.GosDeploy;
 import com.example.module_device.utils.NetUtils;
 import com.example.module_device.view.RoundProgressBar;

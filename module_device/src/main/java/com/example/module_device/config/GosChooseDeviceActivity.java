@@ -21,8 +21,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.example.module_device.GosConstant;
 import com.example.module_device.R;
-import com.example.module_device.base.GosConstant;
 import com.example.module_device.utils.AssetsUtils;
 
 import java.util.ArrayList;

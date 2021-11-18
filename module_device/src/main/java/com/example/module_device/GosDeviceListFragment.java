@@ -34,7 +34,6 @@ import android.widget.Toast;
 
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.example.module_device.base.GosDeviceModuleBaseFragment;
 import com.example.module_device.common.GosDeploy;
 import com.example.module_device.config.GosAirlinkChooseDeviceWorkWiFiActivity;
 import com.example.module_device.config.GosChooseDeviceWorkWiFiActivity;

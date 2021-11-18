@@ -7,6 +7,7 @@ import android.view.ViewConfiguration;
 
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+
 public class VerticalSwipeRefreshLayout extends SwipeRefreshLayout {
 	private int mTouchSlop;
 	// 上一次触摸时的X坐标

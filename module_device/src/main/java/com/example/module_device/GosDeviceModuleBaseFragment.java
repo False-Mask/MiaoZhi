@@ -1,4 +1,4 @@
-package com.example.module_device.base;
+package com.example.module_device;
 
 import android.util.Log;
 

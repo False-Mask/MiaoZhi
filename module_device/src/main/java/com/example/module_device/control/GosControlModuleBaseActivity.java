@@ -6,7 +6,7 @@ import android.view.MenuItem;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
-import com.example.module_device.base.GosBaseActivity;
+import com.example.module_device.GosBaseActivity;
 import com.example.module_device.utils.HexStrUtils;
 import com.gizwits.gizwifisdk.api.GizWifiDevice;
 import com.gizwits.gizwifisdk.enumration.GizWifiDeviceNetStatus;

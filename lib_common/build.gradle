@@ -1,5 +1,8 @@
 apply from: config
 dependencies {
+
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
+
     api files('libs\\BLEasyConfig.jar')
     api files('libs\\easylink2.0.jar')
     api files('libs\\easylinkv3-0.2.6.jar')

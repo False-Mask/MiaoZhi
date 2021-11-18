@@ -4,7 +4,6 @@ import static com.gizwits.gizwifisdk.enumration.GizWifiDeviceType.GizDeviceCente
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Message;
@@ -18,7 +17,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.module_device.common.GosDeploy;
 import com.example.module_device.utils.AssetsUtils;

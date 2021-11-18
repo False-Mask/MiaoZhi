@@ -13,8 +13,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.module_device.GosBaseActivity;
 import com.example.module_device.R;
-import com.example.module_device.base.GosBaseActivity;
 import com.gizwits.gizwifisdk.api.GizWifiSDK;
 import com.gizwits.gizwifisdk.enumration.GizWifiErrorCode;
 import com.gizwits.gizwifisdk.listener.GizWifiSDKListener;

@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.example.module_main.R
 import com.example.module_main.adapter.PagerBannerAdapter
 import com.example.module_main.databinding.MainActivityMainBinding
+import com.example.module_main.databinding.MainFragmentMainBinding
 import com.example.module_main.view.BannerViewPager
 import com.example.module_main.view.BaseBannerAdapter
 
@@ -16,8 +17,8 @@ class MainFragment : Fragment() {
 
     private lateinit var mainBvp: BannerViewPager<Int>
 
-    private val binding: MainActivityMainBinding by lazy {
-        MainActivityMainBinding.inflate(layoutInflater)
+    private val binding: MainFragmentMainBinding by lazy {
+        MainFragmentMainBinding.inflate(layoutInflater)
     }
 
     override fun onCreateView(

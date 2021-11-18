@@ -9,8 +9,6 @@ import android.os.Looper;
 import android.os.Message;
 
 
-import com.example.module_device.base.GosBaseActivity;
-import com.example.module_device.base.GosConstant;
 import com.example.module_device.utils.NetUtils;
 
 import java.util.ArrayList;

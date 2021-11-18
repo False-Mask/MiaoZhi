@@ -1,4 +1,4 @@
-package com.example.module_device.base;
+package com.example.module_device;
 
 import com.gizwits.gizwifisdk.api.GizWifiCentralControlDevice;
 import com.gizwits.gizwifisdk.api.GizWifiDevice;

@@ -1,4 +1,4 @@
-package com.example.module_device.base;
+package com.example.module_device;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -26,7 +26,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import com.example.module_device.R;
 import com.example.module_device.common.GosDeploy;
 import com.example.module_device.utils.ToolUtils;
 import com.gizwits.gizwifisdk.enumration.GizWifiErrorCode;
@@ -123,12 +122,12 @@ public class GosBaseActivity extends AppCompatActivity {
      * @param Title
      */
     public void setToolBar(boolean isIcon, int Title) {
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mToolbar = initToolbar();
         mToolbar.setTitle("");
         setSupportActionBar(mToolbar);
         tvTitle = (TextView) findViewById(R.id.tvTitle);
         // 工具栏的背景颜色
-        mToolbar.setBackgroundColor(GosDeploy.appConfig_Background());
+        //mToolbar.setBackgroundColor(GosDeploy.appConfig_Background());
         SpannableString ssTitle = new SpannableString(this.getString(Title));
         ssTitle.setSpan(new ForegroundColorSpan(GosDeploy.appConfig_Contrast()), 0, ssTitle.length(),
                 Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
@@ -138,6 +137,10 @@ public class GosBaseActivity extends AppCompatActivity {
         } else {
             mToolbar.setNavigationIcon(null);
         }
+    }
+
+    public Toolbar initToolbar() {
+        return findViewById(R.id.toolbar);
     }
 
     /**

@@ -36,9 +36,9 @@ import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
 
+import com.example.module_device.GosConstant;
 import com.example.module_device.GosDeviceReadyActivity;
 import com.example.module_device.R;
-import com.example.module_device.base.GosConstant;
 import com.example.module_device.common.GosDeploy;
 import com.example.module_device.utils.NetUtils;
 
