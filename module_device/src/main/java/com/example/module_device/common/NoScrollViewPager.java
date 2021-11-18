@@ -1,4 +1,4 @@
-package com.example.module_device;
+package com.example.module_device.common;
 
 import android.content.Context;
 import android.util.AttributeSet;

@@ -1,4 +1,4 @@
-package com.example.module_device.config;
+package com.example.module_device.common;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -13,7 +13,6 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.module_device.GosBaseActivity;
 import com.example.module_device.R;
 import com.gizwits.gizwifisdk.api.GizWifiSDK;
 import com.gizwits.gizwifisdk.enumration.GizWifiErrorCode;

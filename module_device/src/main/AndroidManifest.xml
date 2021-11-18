@@ -77,18 +77,18 @@
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application>
-        <activity android:name=".control.GosDeviceControlActivity" />
-        <activity android:name=".GosDeviceReadyActivity" />
-        <activity android:name=".config.GosAirlinkChooseDeviceWorkWiFiActivity" />
-        <activity android:name=".config.GosAirlinkConfigCountdownActivity" />
-        <activity android:name=".config.GosAirlinkReadyActivity" />
-        <activity android:name=".config.GosChooseDeviceActivity" />
-        <activity android:name=".config.GosChooseDeviceWorkWiFiActivity" />
-        <activity android:name=".config.GosChooseModuleHelpActivity" />
-        <activity android:name=".config.GosConfigCountdownActivity" />
-        <activity android:name=".config.GosConfigFailedActivity" />
-        <activity android:name=".config.GosModeListActivity" />
-        <activity android:name=".config.GosModeListActivity2" />
+        <activity android:name=".ui.activity.GosDeviceControlActivity" />
+        <activity android:name=".ui.activity.GosDeviceReadyActivity" />
+        <activity android:name=".ui.activity.GosAirlinkChooseDeviceWorkWiFiActivity" />
+        <activity android:name=".ui.activity.GosAirlinkConfigCountdownActivity" />
+        <activity android:name=".ui.activity.GosAirlinkReadyActivity" />
+        <activity android:name=".ui.activity.GosChooseDeviceActivity" />
+        <activity android:name=".ui.activity.GosChooseDeviceWorkWiFiActivity" />
+        <activity android:name=".ui.activity.GosChooseModuleHelpActivity" />
+        <activity android:name=".ui.activity.GosConfigCountdownActivity" />
+        <activity android:name=".ui.activity.GosConfigFailedActivity" />
+        <activity android:name=".ui.activity.GosModeListActivity" />
+        <activity android:name=".ui.activity.GosModeListActivity2" />
         <activity android:name="zxing.CaptureActivity" />
 
         <!--Required. For publish channel feature-->

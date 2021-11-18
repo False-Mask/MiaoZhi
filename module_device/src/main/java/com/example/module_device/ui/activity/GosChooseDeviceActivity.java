@@ -1,4 +1,4 @@
-package com.example.module_device.config;
+package com.example.module_device.ui.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -21,7 +21,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.example.module_device.GosConstant;
+import com.example.module_device.common.GosConfigModuleBaseActivity;
+import com.example.module_device.model.GosConstant;
 import com.example.module_device.R;
 import com.example.module_device.utils.AssetsUtils;
 

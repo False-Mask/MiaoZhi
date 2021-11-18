@@ -1,4 +1,4 @@
-package com.example.module_device.config;
+package com.example.module_device.ui.activity;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -11,7 +11,6 @@ import android.net.wifi.ScanResult;
 import android.net.wifi.WifiInfo;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -36,8 +35,8 @@ import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
 
-import com.example.module_device.GosConstant;
-import com.example.module_device.GosDeviceReadyActivity;
+import com.example.module_device.common.GosConfigModuleBaseActivity;
+import com.example.module_device.model.GosConstant;
 import com.example.module_device.R;
 import com.example.module_device.common.GosDeploy;
 import com.example.module_device.utils.NetUtils;

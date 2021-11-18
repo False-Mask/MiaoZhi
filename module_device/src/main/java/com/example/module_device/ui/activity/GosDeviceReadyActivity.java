@@ -1,4 +1,4 @@
-package com.example.module_device.config;
+package com.example.module_device.ui.activity;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -13,70 +14,61 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 import com.example.module_device.R;
 import com.example.module_device.common.GosDeploy;
+import com.example.module_device.common.GosConfigModuleBaseActivity;
 import com.example.module_device.utils.AssetsUtils;
 import com.example.module_device.utils.ToolUtils;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class GosAirlinkReadyActivity extends GosConfigModuleBaseActivity implements OnClickListener {
-
+public class GosDeviceReadyActivity extends GosConfigModuleBaseActivity implements OnClickListener {
 
     /**
      * The tv Ready
      */
     TextView tvReady;
 
+    /**
+     * The tv DeviceTip
+     */
+    TextView tvDeviceTips;
 
     /**
      * The btn Next
      */
     Button btnNext;
 
-    TextView tvDeviceTip;
-
     private int sum = 0;
+    /**
+     * The flag
+     */
+    boolean flag = false;
 
-    //private TextView moudlechoose;
-
-    private List<String> modeList;
+    boolean isAirLink = false;
     private ImageView ivReady;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.actvity_gos_airlink_ready);
+        setContentView(R.layout.activity_gos_device_ready);
         // 设置ActionBar
-        setToolBar(true, R.string.airlink_ready_title);
+        setToolBar(true, R.string.model_confirmation);
+        /**   判断是否是从一键配置界面传过去的  */
+        isAirLink = getIntent().getBooleanExtra("isAirLink", false);
 
-        initData();
         initView();
         initEvent();
     }
 
-    private void initData() {
-        // workSSID = spf.getString("workSSID", "");
-
-        modeList = new ArrayList<String>();
-        String[] modes = this.getResources().getStringArray(R.array.mode);
-        for (String string : modes) {
-            modeList.add(string);
-        }
-    }
-
     private void initView() {
         tvReady = (TextView) findViewById(R.id.tvReady);
+        tvDeviceTips = (TextView) findViewById(R.id.tvDeviceTip);
         btnNext = (Button) findViewById(R.id.btnNext);
-        tvDeviceTip = (TextView) findViewById(R.id.tvDeviceTip);
         ivReady = (ImageView) findViewById(R.id.ivReady);
         SpannableString spannableString = new SpannableString(getString(R.string.common_ready_message));
         if (AssetsUtils.isZh(this)) {
-            spannableString.setSpan(new ForegroundColorSpan(Color.parseColor("#007AFF")), 9, 14, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            spannableString.setSpan(new ForegroundColorSpan(Color.parseColor("#FF9500")), 9, 14, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         } else {
-            spannableString.setSpan(new ForegroundColorSpan(Color.parseColor("#007AFF")), 28, 45, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            spannableString.setSpan(new ForegroundColorSpan(Color.parseColor("#FF9500")), 28, 45, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
 
         tvReady.setText(spannableString);
@@ -84,11 +76,12 @@ public class GosAirlinkReadyActivity extends GosConfigModuleBaseActivity impleme
         // 配置文件部署
         btnNext.setBackgroundDrawable(GosDeploy.appConfig_BackgroundColor());
         btnNext.setTextColor(GosDeploy.appConfig_Contrast());
+
     }
 
     private void initEvent() {
         btnNext.setOnClickListener(this);
-        tvDeviceTip.setOnClickListener(this);
+        tvDeviceTips.setOnClickListener(this);
         ivReady.setOnClickListener(this);
     }
 
@@ -97,10 +90,26 @@ public class GosAirlinkReadyActivity extends GosConfigModuleBaseActivity impleme
         if (v.getId() == R.id.btnNext) {
             if (ToolUtils.noDoubleClick()) {
                 sum = 0;
-                Intent intent = new Intent(this, GosAirlinkConfigCountdownActivity.class);
-                startActivity(intent);
+                Intent intent2 = new Intent(GosDeviceReadyActivity.this, GosChooseDeviceActivity.class);
+                startActivity(intent2);
             }
         }
+    }
+
+    // 屏蔽掉返回键
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            sum = 0;
+            if (isAirLink) {
+                //Intent intent = new Intent(GosDeviceReadyActivity.this, GosMainActivity.class);
+                //startActivity(intent);
+            } else {
+                finish();
+            }
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -108,21 +117,16 @@ public class GosAirlinkReadyActivity extends GosConfigModuleBaseActivity impleme
         switch (item.getItemId()) {
             case android.R.id.home:
                 sum = 0;
-                this.finish();
-                //overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+                if (isAirLink) {
+                   // Intent intent = new Intent(GosDeviceReadyActivity.this, GosMainActivity.class);
+                   // startActivity(intent);
+                } else {
+                    finish();
+                }
                 break;
         }
         return true;
     }
-
-//    @Override
-//    public boolean onKeyDown(int keyCode, KeyEvent event) {
-//        Intent intent = new Intent(this, GosAirlinkChooseDeviceWorkWiFiActivity.class);
-//        startActivity(intent);
-//        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
-//        this.finish();
-//        return true;
-//    }
 
 
 }

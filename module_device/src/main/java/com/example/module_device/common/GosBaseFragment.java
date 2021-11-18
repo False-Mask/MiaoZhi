@@ -1,4 +1,4 @@
-package com.example.module_device;
+package com.example.module_device.common;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.module_device.R;
 import com.gizwits.gizwifisdk.enumration.GizWifiErrorCode;
 
 /**

@@ -1,11 +1,12 @@
-package com.example.module_device;
+package com.example.module_device.common;
 
 import android.content.Context;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.widget.Toast;
 
-import com.example.module_device.common.GosDeploy;
+import com.example.module_device.R;
+import com.example.module_device.model.GosConstant;
 import com.gizwits.gizwifisdk.api.GizWifiSDK;
 import com.gizwits.gizwifisdk.enumration.GizLogPrintLevel;
 

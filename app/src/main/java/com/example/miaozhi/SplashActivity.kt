@@ -7,7 +7,7 @@ import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.example.miaozhi.databinding.ActivitySplashBinding
-import com.example.module_device.MessageCenter
+import com.example.module_device.common.MessageCenter
 import com.example.module_login.LoginActivity
 
 class SplashActivity : AppCompatActivity(), ActivityCompat.OnRequestPermissionsResultCallback {

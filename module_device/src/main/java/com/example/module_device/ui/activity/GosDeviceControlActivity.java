@@ -1,4 +1,4 @@
-package com.example.module_device.control;
+package com.example.module_device.ui.activity;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -29,6 +29,7 @@ import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
 
 import com.example.module_device.R;
+import com.example.module_device.common.GosControlModuleBaseActivity;
 import com.example.module_device.common.GosDeploy;
 import com.gizwits.gizwifisdk.api.GizWifiDevice;
 import com.gizwits.gizwifisdk.enumration.GizWifiDeviceNetStatus;

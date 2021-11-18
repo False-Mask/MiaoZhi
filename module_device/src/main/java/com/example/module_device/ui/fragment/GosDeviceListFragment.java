@@ -1,4 +1,4 @@
-package com.example.module_device;
+package com.example.module_device.ui.fragment;
 
 import static android.widget.Toast.LENGTH_LONG;
 
@@ -34,10 +34,14 @@ import android.widget.Toast;
 
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.example.module_device.adapter.GosDeviceListAdapter;
+import com.example.module_device.GosMessageHandler;
+import com.example.module_device.R;
 import com.example.module_device.common.GosDeploy;
-import com.example.module_device.config.GosAirlinkChooseDeviceWorkWiFiActivity;
-import com.example.module_device.config.GosChooseDeviceWorkWiFiActivity;
-import com.example.module_device.control.GosDeviceControlActivity;
+import com.example.module_device.common.GosDeviceModuleBaseFragment;
+import com.example.module_device.ui.activity.GosAirlinkChooseDeviceWorkWiFiActivity;
+import com.example.module_device.ui.activity.GosChooseDeviceWorkWiFiActivity;
+import com.example.module_device.ui.activity.GosDeviceControlActivity;
 import com.example.module_device.view.SlideListView2;
 import com.example.module_device.view.VerticalSwipeRefreshLayout;
 import com.gizwits.gizwifisdk.api.GizDeviceSharing;

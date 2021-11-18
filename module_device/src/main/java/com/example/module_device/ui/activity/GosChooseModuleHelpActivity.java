@@ -1,10 +1,11 @@
-package com.example.module_device.config;
+package com.example.module_device.ui.activity;
 
 import android.os.Bundle;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 import com.example.module_device.R;
+import com.example.module_device.common.GosConfigModuleBaseActivity;
 import com.example.module_device.utils.AssetsUtils;
 
 

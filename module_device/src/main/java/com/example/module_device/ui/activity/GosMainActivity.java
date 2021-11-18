@@ -21,8 +21,8 @@
 //import androidx.fragment.app.Fragment;
 //import androidx.fragment.app.FragmentPagerAdapter;
 //
-//import com.example.module_device.GosDeviceModuleBaseActivity;
-//import com.example.module_device.NoScrollViewPager;
+//import com.example.module_device.common.GosDeviceModuleBaseActivity;
+//import com.example.module_device.common.NoScrollViewPager;
 //import com.example.module_device.common.GosDeploy;
 //import com.example.module_device.utils.ToolUtils;
 //import com.google.android.material.bottomnavigation.BottomNavigationView;

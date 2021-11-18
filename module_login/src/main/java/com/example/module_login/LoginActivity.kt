@@ -86,4 +86,8 @@ class LoginActivity : AppCompatActivity() {
             startActivity(Intent("com.example.miaozhi.main"))
         }
     }
+
+    override fun onResume() {
+        super.onResume()
+    }
 }

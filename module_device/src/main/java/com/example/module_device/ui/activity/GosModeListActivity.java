@@ -1,4 +1,4 @@
-package com.example.module_device.config;
+package com.example.module_device.ui.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,7 +18,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.module_device.GosDeviceReadyActivity;
+import com.example.module_device.common.GosConfigModuleBaseActivity;
 import com.example.module_device.R;
 import com.example.module_device.common.GosDeploy;
 import com.example.module_device.utils.ToolUtils;

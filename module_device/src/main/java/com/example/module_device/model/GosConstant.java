@@ -1,4 +1,4 @@
-package com.example.module_device;
+package com.example.module_device.model;
 
 import android.net.wifi.ScanResult;
 

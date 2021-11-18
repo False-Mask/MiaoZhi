@@ -39,8 +39,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.module_device.GosBaseActivity;
-import com.example.module_device.GosDeviceListFragment;
+import com.example.module_device.common.GosBaseActivity;
+import com.example.module_device.ui.fragment.GosDeviceListFragment;
 import com.example.module_device.R;
 import com.google.zxing.Result;
 

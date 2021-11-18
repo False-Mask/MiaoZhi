@@ -1,4 +1,6 @@
-package com.example.module_device;
+package com.example.module_device.common;
+
+import android.util.Log;
 
 import com.gizwits.gizwifisdk.api.GizWifiCentralControlDevice;
 import com.gizwits.gizwifisdk.api.GizWifiDevice;
@@ -14,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class GosDeviceModuleBaseActivity extends GosBaseActivity {
+public class GosDeviceModuleBaseFragment extends GosBaseFragment {
 
     /**
      * 设备列表
@@ -25,34 +27,35 @@ public class GosDeviceModuleBaseActivity extends GosBaseActivity {
 
         /** 用于设备列表 */
         public void didDiscovered(GizWifiErrorCode result, List<GizWifiDevice> deviceList) {
-            GosDeviceModuleBaseActivity.this.didDiscovered(result, deviceList);
+            GosDeviceModuleBaseFragment.this.didDiscovered(result, deviceList);
+            Log.e("GosDeviceModuleBaseFragment", "didDiscovered=====----: 更新数据");
         }
 
         /** 用于用户匿名登录 */
         public void didUserLogin(GizWifiErrorCode result, String uid, String token) {
-            GosDeviceModuleBaseActivity.this.didUserLogin(result, uid, token);
+            GosDeviceModuleBaseFragment.this.didUserLogin(result, uid, token);
         }
 
         /** 用于设备解绑 */
         public void didUnbindDevice(GizWifiErrorCode result, String did) {
-            GosDeviceModuleBaseActivity.this.didUnbindDevice(result, did);
+            GosDeviceModuleBaseFragment.this.didUnbindDevice(result, did);
         }
 
         /** 用于设备绑定 */
         public void didBindDevice(GizWifiErrorCode result, String did) {
-            GosDeviceModuleBaseActivity.this.didBindDevice(result, did);
+            GosDeviceModuleBaseFragment.this.didBindDevice(result, did);
         }
 
         /** 用于设备绑定（旧） */
         public void didBindDevice(int error, String errorMessage, String did) {
-            GosDeviceModuleBaseActivity.this.didBindDevice(error, errorMessage, did);
+            GosDeviceModuleBaseFragment.this.didBindDevice(error, errorMessage, did);
         }
 
         ;
 
         /** 用于绑定推送 */
         public void didChannelIDBind(GizWifiErrorCode result) {
-            GosDeviceModuleBaseActivity.this.didChannelIDBind(result);
+            GosDeviceModuleBaseFragment.this.didChannelIDBind(result);
         }
 
     };
@@ -121,7 +124,7 @@ public class GosDeviceModuleBaseActivity extends GosBaseActivity {
 
         // 用于设备订阅
         public void didSetSubscribe(GizWifiErrorCode result, GizWifiDevice device, boolean isSubscribed) {
-            GosDeviceModuleBaseActivity.this.didSetSubscribe(result, device, isSubscribed);
+            GosDeviceModuleBaseFragment.this.didSetSubscribe(result, device, isSubscribed);
         }
 
         ;
@@ -132,19 +135,19 @@ public class GosDeviceModuleBaseActivity extends GosBaseActivity {
 
         // 用于设备订阅
         public void didSetSubscribe(GizWifiErrorCode result, GizWifiDevice device, boolean isSubscribed) {
-            GosDeviceModuleBaseActivity.this.didSetSubscribe(result, device, isSubscribed);
+            GosDeviceModuleBaseFragment.this.didSetSubscribe(result, device, isSubscribed);
         }
 
         //同步更新子设备列表
         @Override
         public void didUpdateSubDevices(GizWifiCentralControlDevice device, GizWifiErrorCode result, List<GizWifiDevice> subDeviceList) {
-            GosDeviceModuleBaseActivity.this.didUpdateSubDevices(device, result, subDeviceList);
+            GosDeviceModuleBaseFragment.this.didUpdateSubDevices(device, result, subDeviceList);
         }
 
         //设备网络状态变化通知
         @Override
         public void didUpdateNetStatus(GizWifiDevice device, GizWifiDeviceNetStatus netStatus) {
-            GosDeviceModuleBaseActivity.this.didUpdateNetStatus(device, netStatus);
+            GosDeviceModuleBaseFragment.this.didUpdateNetStatus(device, netStatus);
         }
 
         ;
@@ -192,11 +195,13 @@ public class GosDeviceModuleBaseActivity extends GosBaseActivity {
     }
 
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
         // 每次返回activity都要注册一次sdk监听器，保证sdk状态能正确回调
         GizWifiSDK.sharedInstance().setListener(gizWifiSDKListener);
+        Log.e("TAG", "GosDeviceModuleBaseFragment   ----onResume: ---");
     }
+
 
     /**
      * @param result
