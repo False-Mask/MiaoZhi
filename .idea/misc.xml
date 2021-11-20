@@ -3,6 +3,41 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/An/MiaoZhi/module_login/src/main/res/layout/login_activity_login.xml" value="0.4" />
+        <entry key="..\:/An/MiaoZhi/module_main/src/main/res/drawable/ic_launcher_background.xml" value="0.11302083333333333" />
+        <entry key="..\:/An/MiaoZhi/module_main/src/main/res/drawable/ic_login_logo.xml" value="0.2515625" />
+        <entry key="..\:/An/MiaoZhi/module_main/src/main/res/drawable/ic_md_chevron_right_copy.xml" value="0.2515625" />
+        <entry key="..\:/An/MiaoZhi/module_main/src/main/res/drawable/main_ic_main_alarm.xml" value="0.2515625" />
+        <entry key="..\:/An/MiaoZhi/module_main/src/main/res/drawable/main_ic_main_eheromometer.xml" value="0.2515625" />
+        <entry key="..\:/An/MiaoZhi/module_main/src/main/res/drawable/main_ic_main_phone.xml" value="0.2515625" />
+        <entry key="..\:/An/MiaoZhi/module_main/src/main/res/drawable/main_ic_main_schedule.xml" value="0.2515625" />
+        <entry key="..\:/An/MiaoZhi/module_main/src/main/res/drawable/main_ic_main_sunny.xml" value="0.2515625" />
+        <entry key="..\:/An/MiaoZhi/module_main/src/main/res/drawable/main_ic_main_target.xml" value="0.2515625" />
+        <entry key="..\:/An/MiaoZhi/module_main/src/main/res/drawable/main_ic_user_contact.xml" value="0.2515625" />
+        <entry key="..\:/An/MiaoZhi/module_main/src/main/res/drawable/main_ic_user_control.xml" value="0.2515625" />
+        <entry key="..\:/An/MiaoZhi/module_main/src/main/res/drawable/main_ic_user_device.xml" value="0.2515625" />
+        <entry key="..\:/An/MiaoZhi/module_main/src/main/res/drawable/main_ic_user_file.xml" value="0.2515625" />
+        <entry key="..\:/An/MiaoZhi/module_main/src/main/res/drawable/main_ic_user_microship.xml" value="0.2515625" />
+        <entry key="..\:/An/MiaoZhi/module_main/src/main/res/drawable/main_ic_user_ring.xml" value="0.2515625" />
+        <entry key="..\:/An/MiaoZhi/module_main/src/main/res/drawable/main_shape_btn_try.xml" value="0.2515625" />
+        <entry key="..\:/An/MiaoZhi/module_main/src/main/res/drawable/main_shape_bvp_dot.xml" value="0.2515625" />
+        <entry key="..\:/An/MiaoZhi/module_main/src/main/res/drawable/main_shape_bvp_dot_selected.xml" value="0.2515625" />
+        <entry key="..\:/An/MiaoZhi/module_main/src/main/res/drawable/main_shape_ibtn_ring.xml" value="0.2515625" />
+        <entry key="..\:/An/MiaoZhi/module_main/src/main/res/drawable/mine_shape_bvp_dot.xml" value="0.2515625" />
+        <entry key="..\:/An/MiaoZhi/module_main/src/main/res/drawable/mine_shape_bvp_dot_selected.xml" value="0.2515625" />
+        <entry key="..\:/An/MiaoZhi/module_main/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/An/MiaoZhi/module_main/src/main/res/layout/activity_main2.xml" value="0.11510416666666666" />
+        <entry key="..\:/An/MiaoZhi/module_main/src/main/res/layout/fragment_main.xml" value="0.264" />
+        <entry key="..\:/An/MiaoZhi/module_main/src/main/res/layout/main_activity_main.xml" value="0.23541666666666666" />
+        <entry key="..\:/An/MiaoZhi/module_main/src/main/res/layout/main_fragment_main.xml" value="0.264" />
+        <entry key="..\:/An/MiaoZhi/module_main/src/main/res/layout/main_fragment_user.xml" value="0.264" />
+        <entry key="..\:/An/MiaoZhi/module_main/src/main/res/layout/main_item_bvp_samll.xml" value="0.23541666666666666" />
+        <entry key="..\:/An/MiaoZhi/module_main/src/main/res/layout/main_item_func.xml" value="0.4" />
+        <entry key="..\:/An/MiaoZhi/module_main/src/main/res/layout/main_view_bvp_layout.xml" value="0.23541666666666666" />
+        <entry key="..\:/An/MiaoZhi/module_main/src/main/res/layout/mine_item_bvp_samll.xml" value="0.23541666666666666" />
+        <entry key="..\:/An/MiaoZhi/module_main/src/main/res/layout/mine_item_bvp_small_pager.xml" value="0.23541666666666666" />
+        <entry key="..\:/An/MiaoZhi/module_main/src/main/res/layout/mine_util_bvp_layout.xml" value="0.23541666666666666" />
+        <entry key="..\:/An/MiaoZhi/module_main/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.11302083333333333" />
         <entry key="..\:/Code/Android/Up/MiaoZhi/app/src/main/res/layout/activity_main.xml" value="0.2557291666666667" />
         <entry key="..\:/Code/Android/Up/MiaoZhi/app/src/main/res/layout/app_fragment_content.xml" value="0.23125" />
         <entry key="..\:/Code/Android/Up/MiaoZhi/module_login/src/main/res/drawable/ic_launcher_background.xml" value="0.24739583333333334" />

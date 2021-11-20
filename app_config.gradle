@@ -26,17 +26,17 @@ android {
 
     //Manifest位置
     sourceSets {
-            if (name.matches("module_.+")) {
-                if (isDebug.toBoolean()) {
-                    main{
-                        manifest.srcFile 'src/main/module/AndroidManifest.xml'
-                    }
-                    //main.manifest.srcFile 'src/main/module/AndroidManifest.xml'
+        if (name.matches("module_.+")) {
+            if (isDebug.toBoolean()) {
+                main{
+                    manifest.srcFile 'src/main/module/AndroidManifest.xml'
                 }
+                //main.manifest.srcFile 'src/main/module/AndroidManifest.xml'
             }
-            /*java{
-                exclude "debug/**"
-            }*/
+        }
+        /*java{
+            exclude "debug/**"
+        }*/
     }
 
     buildTypes {
