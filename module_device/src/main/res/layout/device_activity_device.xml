@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.DeviceActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tb_bar"
+        android:layout_width="match_parent"
+        android:background="#edf3f9"
+        android:gravity="center"
+        app:navigationIcon="@drawable/ic_toolbar_nav"
+        android:layout_height="?android:attr/actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="温湿度控制器"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_humidometer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="#d8f6fd"
+        app:cardCornerRadius="5dp"
+        app:layout_constraintBottom_toTopOf="@id/cv_socket"
+        app:layout_constraintEnd_toStartOf="@id/cv_bluetooth"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tb_bar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="160dp"
+            android:layout_height="144dp">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="43dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="13dp"
+                android:layout_marginTop="13dp"
+                android:src="@drawable/ic_device_humidometer"
+                app:layout_constraintDimensionRatio="h,1:1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_humidometer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:text="湿度计"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/imageView"
+                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+            <TextView
+                android:id="@+id/tv_humidometer_dis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="设备已打开"
+                android:textSize="13sp"
+                app:layout_constraintStart_toStartOf="@+id/tv_humidometer"
+                app:layout_constraintTop_toBottomOf="@+id/tv_humidometer" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/s_thermometer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:checked="true"
+                android:enabled="false"
+                android:textOff="OFF"
+                android:textOn="ON"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_humidometer_dis"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_humidometer" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_socket"
+        android:layout_width="160dp"
+        android:layout_height="144dp"
+        app:cardBackgroundColor="#fafdff"
+        app:cardCornerRadius="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/cv_thermometer"
+        app:layout_constraintEnd_toStartOf="@id/cv_wifi"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cv_humidometer">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_socket"
+                android:layout_width="43dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="13dp"
+                android:layout_marginTop="13dp"
+                android:src="@drawable/ic_device_socket"
+                app:layout_constraintDimensionRatio="h,1:1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_socket"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:text="插排"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/iv_socket"
+                app:layout_constraintTop_toBottomOf="@+id/iv_socket" />
+
+            <TextView
+                android:id="@+id/tv_socket2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="插排已关闭"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tv_socket"
+                app:layout_constraintTop_toBottomOf="@+id/tv_socket" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/s_socket"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:checked="false"
+                android:enabled="false"
+                android:textOff="OFF"
+                android:textOn="ON"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_socket2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_socket" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_bluetooth"
+        android:layout_width="160dp"
+        android:layout_height="144dp"
+        app:cardBackgroundColor="#fafdff"
+        app:cardCornerRadius="5dp"
+        app:layout_constraintBottom_toBottomOf="@id/cv_humidometer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/cv_humidometer"
+        app:layout_constraintTop_toTopOf="@id/cv_humidometer">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_bluetooth"
+                android:layout_width="43dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="13dp"
+                android:layout_marginTop="13dp"
+                android:src="@drawable/ic_device_bluetooth"
+                app:layout_constraintDimensionRatio="h,1:1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/rv_bluetooth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:text="蓝牙"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/iv_bluetooth"
+                app:layout_constraintTop_toBottomOf="@+id/iv_bluetooth" />
+
+            <TextView
+                android:id="@+id/tv_bluetooth2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="设备已打开"
+                android:textSize="13sp"
+                app:layout_constraintStart_toStartOf="@+id/rv_bluetooth"
+                app:layout_constraintTop_toBottomOf="@+id/rv_bluetooth" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/s_bluetooth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:checked="true"
+                android:enabled="true"
+                android:textOff="OFF"
+                android:textOn="ON"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_bluetooth2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/rv_bluetooth" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_wifi"
+        android:layout_width="160dp"
+        android:layout_height="144dp"
+        app:cardBackgroundColor="#d8f6fd"
+        app:cardCornerRadius="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cv_socket"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/cv_socket"
+        app:layout_constraintTop_toTopOf="@+id/cv_socket">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_wifi"
+                android:layout_width="43dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="13dp"
+                android:layout_marginTop="13dp"
+                android:src="@drawable/ic_device_wifi"
+                app:layout_constraintDimensionRatio="h,1:1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_wifi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:text="WIFI"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/iv_wifi"
+                app:layout_constraintTop_toBottomOf="@+id/iv_wifi" />
+
+            <TextView
+                android:id="@+id/tv_wifi_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="网络已打开"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tv_wifi"
+                app:layout_constraintTop_toBottomOf="@+id/tv_wifi" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/s_wifi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:checked="true"
+                android:enabled="false"
+                android:textOff="关"
+                android:textOn="开"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_wifi_2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_wifi" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_error"
+        android:layout_width="160dp"
+        android:layout_height="144dp"
+        app:cardBackgroundColor="#f5fafe"
+        app:cardCornerRadius="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/cv_thermometer"
+        app:layout_constraintTop_toTopOf="@+id/cv_thermometer">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_error"
+                android:layout_width="43dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="13dp"
+                android:layout_marginTop="13dp"
+                android:src="@drawable/ic_device_error"
+                app:layout_constraintDimensionRatio="h,1:1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_error"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:text="异常提醒"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/iv_error"
+                app:layout_constraintTop_toBottomOf="@+id/iv_error" />
+
+            <TextView
+                android:id="@+id/tv_error_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="温度异常时提醒"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tv_error"
+                app:layout_constraintTop_toBottomOf="@+id/tv_error" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/s_error"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="3dp"
+                android:checked="true"
+                android:enabled="true"
+                android:textOff="关"
+                android:textOn="开"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_error_2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_error" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_air"
+        android:layout_width="160dp"
+        android:layout_height="144dp"
+        app:cardBackgroundColor="#f5fafe"
+        app:cardCornerRadius="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cv_thermometer"
+        app:layout_constraintEnd_toEndOf="@+id/cv_error"
+        app:layout_constraintStart_toStartOf="@+id/cv_error">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_air"
+                android:layout_width="43dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="13dp"
+                android:layout_marginTop="13dp"
+                android:src="@drawable/ic_device_air"
+                app:layout_constraintDimensionRatio="h,1:1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_air"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="空调与除湿器"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/iv_air"
+                app:layout_constraintTop_toBottomOf="@+id/iv_air" />
+
+            <TextView
+                android:id="@+id/tv_air_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="13dp"
+                android:paddingEnd="5dp"
+                android:text="当温湿度异常时，试试控制它们来调节吧！"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_air" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_thermometer"
+        android:layout_width="160dp"
+        android:layout_height="305dp"
+        app:cardBackgroundColor="#f5fafe"
+        app:cardCornerRadius="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/cv_error"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cv_socket">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_thermometer"
+                android:layout_width="43dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="13dp"
+                android:layout_marginTop="13dp"
+                android:src="@drawable/ic_device_thermometer"
+                app:layout_constraintDimensionRatio="h,1:1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_thermometer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="温湿度显示"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/tv_thermometer_2"
+                app:layout_constraintStart_toStartOf="@+id/iv_thermometer"
+                app:layout_constraintTop_toBottomOf="@+id/iv_thermometer"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <TextView
+                android:id="@+id/tv_thermometer_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="需成功与设备连接"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@id/tv_temperature"
+                app:layout_constraintStart_toStartOf="@+id/tv_thermometer"
+                app:layout_constraintTop_toBottomOf="@+id/tv_thermometer" />
+
+            <TextView
+                android:id="@+id/tv_temperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="温度16℃"
+                app:layout_constraintBottom_toTopOf="@+id/tv_humidity"
+                app:layout_constraintStart_toStartOf="@+id/tv_thermometer_2"
+                app:layout_constraintTop_toBottomOf="@+id/tv_thermometer_2" />
+
+            <TextView
+                android:id="@+id/tv_humidity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="81dp"
+                android:text="湿度40%"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tv_temperature"
+                app:layout_constraintTop_toBottomOf="@id/tv_temperature" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

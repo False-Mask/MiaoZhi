@@ -11,7 +11,7 @@
         tools:layout="@layout/main_activity_main"/>
     <fragment
         android:id="@+id/menu_device"
-        android:name="com.example.module_device.GosDeviceListFragment"
+        android:name="com.example.module_device.ui.fragment.GosDeviceListFragment"
         android:label="GosDeviceListFragment"
         tools:layout="@layout/activity_gos_device_list"/>
 </navigation>

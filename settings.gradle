@@ -8,7 +8,6 @@ dependencyResolutionManagement {
 }
 rootProject.name = "MiaoZhi"
 include ':app'
-include ':base'
 include ':lib_common'
 include ':lib_base'
 include ':module_login'

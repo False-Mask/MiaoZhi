@@ -10,8 +10,7 @@
         android:id="@+id/iv_login_logo"
         android:layout_width="300dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="32dp"
-        app:layout_constraintBottom_toTopOf="@id/et_phone"
+        app:layout_constraintBottom_toTopOf="@id/et_username"
         app:layout_constraintDimensionRatio="w,1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -21,22 +20,21 @@
         app:srcCompat="@drawable/ic_login_logo" />
 
     <EditText
-        android:id="@+id/et_phone"
+        android:id="@+id/et_psw"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
-        android:layout_marginEnd="@dimen/login_margin_dimension"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="36dp"
         android:background="@drawable/shape_et_round"
         android:ems="10"
         android:gravity="center"
         android:hint="@string/login_edit_input_hint"
-        android:inputType="phone"
-        android:maxLength="11"
-        android:textSize="16sp"
+        android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/btn_login_regist"
-        app:layout_constraintEnd_toEndOf="@+id/iv_login_logo"
-        app:layout_constraintStart_toStartOf="@+id/iv_login_logo"
-        app:layout_constraintTop_toBottomOf="@+id/iv_login_logo"
+        app:layout_constraintEnd_toEndOf="@+id/et_username"
+        app:layout_constraintStart_toStartOf="@+id/et_username"
+        app:layout_constraintTop_toBottomOf="@id/et_username"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <Button
@@ -51,9 +49,9 @@
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/btn_guest"
-        app:layout_constraintEnd_toEndOf="@+id/et_phone"
-        app:layout_constraintStart_toStartOf="@+id/et_phone"
-        app:layout_constraintTop_toBottomOf="@+id/et_phone" />
+        app:layout_constraintEnd_toEndOf="@+id/et_psw"
+        app:layout_constraintStart_toStartOf="@+id/et_psw"
+        app:layout_constraintTop_toBottomOf="@+id/et_psw" />
 
     <Button
         android:id="@+id/btn_guest"
@@ -70,5 +68,22 @@
         app:layout_constraintEnd_toEndOf="@+id/btn_login_regist"
         app:layout_constraintStart_toStartOf="@+id/btn_login_regist"
         app:layout_constraintTop_toBottomOf="@+id/btn_login_regist" />
+
+    <EditText
+        android:id="@+id/et_username"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="36dp"
+        android:ems="10"
+        android:background="@drawable/shape_et_round"
+        android:hint="UserName"
+        android:gravity="center"
+        android:inputType="numberSigned"
+        app:layout_constraintBottom_toTopOf="@+id/et_psw"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_login_logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

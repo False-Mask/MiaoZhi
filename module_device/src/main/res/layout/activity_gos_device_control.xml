@@ -36,14 +36,14 @@
 						android:layout_centerVertical="true"
 						android:text="开启/关闭红色灯" />
 
-					<Switch
-						android:id="@+id/sw_bool_LED_OnOff"
-						android:layout_width="wrap_content"
-						android:layout_height="match_parent"
-						android:layout_alignParentRight="true"
-						android:layout_centerVertical="true"
-						android:textOff="关闭"
-						android:textOn="开启" />
+				 <Switch
+					 android:id="@+id/sw_bool_LED_OnOff"
+					 android:layout_width="wrap_content"
+					 android:layout_height="match_parent"
+					 android:layout_alignParentRight="true"
+					 android:layout_centerVertical="true"
+					 android:textOff="关闭"
+					 android:textOn="开启" />
 						
 			</RelativeLayout>	
 	

@@ -2,55 +2,42 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.module_device">
-
-
-    <!--push-all-start-->
-    <!--push_jiguang-false-start-->
+    <!-- push-all-start -->
+    <!-- push_jiguang-false-start -->
     <!-- 极光推送 -->
-    <permission android:name="com.gizwits.opensource.appkit.permission.JPUSH_MESSAGE"
+    <permission
+        android:name="com.gizwits.opensource.appkit.permission.JPUSH_MESSAGE"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-
-    <!-- Required  一些系统要求的权限，如访问网络等 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- Required  一些系统要求的权限，如访问网络等 -->
     <uses-permission android:name="com.gizwits.opensource.appkit.permission.JPUSH_MESSAGE" />
-
     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
+    <uses-permission
+        android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
         tools:ignore="ProtectedPermissions" />
-    <uses-permission android:name="android.permission.WRITE_SETTINGS"
-        tools:ignore="ProtectedPermissions" />
-
-    <!-- Optional. Required for location feature -->
+    <uses-permission
+        android:name="android.permission.WRITE_SETTINGS"
+        tools:ignore="ProtectedPermissions" /> <!-- Optional. Required for location feature -->
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
-    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-    <!-- 极光推送 -->
-    <!--push_jiguang-false-end-->
-
-    <!--push_baidu-false-start-->
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" /> <!-- 极光推送 -->
+    <!-- push_jiguang-false-end -->
+    <!-- push_baidu-false-start -->
     <!-- 百度推送 -->
     <!-- Push service 运行需要的权限 -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
-
-    <!-- 富媒体需要声明的权限 -->
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" /> <!-- 富媒体需要声明的权限 -->
     <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
     <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
-    <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
+    <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" /> <!-- 适配Android N系统必需的ContentProvider写权限声明，写权限包含应用包名 -->
+    <uses-permission android:name="baidu.push.permission.WRITE_PUSHINFOPROVIDER.com.gizwits.opensource.appkit" />
 
-    <!-- 适配Android N系统必需的ContentProvider写权限声明，写权限包含应用包名-->
-    <uses-permission
-        android:name="baidu.push.permission.WRITE_PUSHINFOPROVIDER.com.gizwits.opensource.appkit" />
-
-    <permission android:name="baidu.push.permission.WRITE_PUSHINFOPROVIDER.com.gizwits.opensource.appkit"
-        android:protectionLevel="signature"></permission>
-    <!--push_baidu-false-end-->
-    <!--push-all-end-->
-
+    <permission
+        android:name="baidu.push.permission.WRITE_PUSHINFOPROVIDER.com.gizwits.opensource.appkit"
+        android:protectionLevel="signature" /> <!-- push_baidu-false-end -->
+    <!-- push-all-end -->
     <!-- SDK 使用权限 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -59,71 +46,71 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_LOGS"
+    <uses-permission
+        android:name="android.permission.READ_LOGS"
         tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.VIBRATE" />
-    <!-- 乐鑫配置库中使用的权限（WIFI组播） -->
+    <uses-permission android:name="android.permission.VIBRATE" /> <!-- 乐鑫配置库中使用的权限（WIFI组播） -->
     <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <uses-permission android:name="android.permission.GET_TASKS" />
-
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application>
-        <activity android:name=".control.GosDeviceControlActivity" />
-        <activity android:name=".GosDeviceReadyActivity" />
-        <activity android:name=".config.GosAirlinkChooseDeviceWorkWiFiActivity" />
-        <activity android:name=".config.GosAirlinkConfigCountdownActivity" />
-        <activity android:name=".config.GosAirlinkReadyActivity" />
-        <activity android:name=".config.GosChooseDeviceActivity" />
-        <activity android:name=".config.GosChooseDeviceWorkWiFiActivity" />
-        <activity android:name=".config.GosChooseModuleHelpActivity" />
-        <activity android:name=".config.GosConfigCountdownActivity" />
-        <activity android:name=".config.GosConfigFailedActivity" />
-        <activity android:name=".config.GosModeListActivity" />
-        <activity android:name=".config.GosModeListActivity2" />
-        <activity android:name="zxing.CaptureActivity" />
-
-        <!--Required. For publish channel feature-->
-        <!--JPUSH_CHANNEL 是为了方便开发者统计APK分发渠道。-->
-        <!--例如:-->
-        <!--发到 Google Play 的APK可以设置为 google-play;-->
-        <!--发到其他市场的 APK 可以设置为 xxx-market。-->
-        <!--目前这个渠道统计功能的报表还未开放。-->
-        <meta-data android:name="JPUSH_CHANNEL" android:value="developer-default" />
-        <!--Required. AppKey copied from Portal-->
-        <meta-data android:name="JPUSH_APPKEY" android:value="JPUSH_APPKEY" />
-
-        <!--push_jiguang-false-end-->
-
-
-        <!--push_baidu-false-start-->
-        <!--百度推送-->
-        <!--push service start-->
-        <!--用于接收系统消息以保证PushService正常运行-->
-        <receiver android:name="com.baidu.android.pushservice.PushServiceReceiver"
+        <activity
+            android:name=".ui.activity.DeviceActivity"
+            android:exported="false" />
+        <activity android:name=".ui.activity.GosDeviceControlActivity" />
+        <activity android:name=".ui.activity.GosDeviceReadyActivity" />
+        <activity android:name=".ui.activity.GosAirlinkChooseDeviceWorkWiFiActivity" />
+        <activity android:name=".ui.activity.GosAirlinkConfigCountdownActivity" />
+        <activity android:name=".ui.activity.GosAirlinkReadyActivity" />
+        <activity android:name=".ui.activity.GosChooseDeviceActivity" />
+        <activity android:name=".ui.activity.GosChooseDeviceWorkWiFiActivity" />
+        <activity android:name=".ui.activity.GosChooseModuleHelpActivity" />
+        <activity android:name=".ui.activity.GosConfigCountdownActivity" />
+        <activity android:name=".ui.activity.GosConfigFailedActivity" />
+        <activity android:name=".ui.activity.GosModeListActivity" />
+        <activity android:name=".ui.activity.GosModeListActivity2" />
+        <activity android:name="zxing.CaptureActivity" /> <!-- Required. For publish channel feature -->
+        <!-- JPUSH_CHANNEL 是为了方便开发者统计APK分发渠道。 -->
+        <!-- 例如: -->
+        <!-- 发到 Google Play 的APK可以设置为 google-play; -->
+        <!-- 发到其他市场的 APK 可以设置为 xxx-market。 -->
+        <!-- 目前这个渠道统计功能的报表还未开放。 -->
+        <meta-data
+            android:name="JPUSH_CHANNEL"
+            android:value="developer-default" /> <!-- Required. AppKey copied from Portal -->
+        <meta-data
+            android:name="JPUSH_APPKEY"
+            android:value="JPUSH_APPKEY" /> <!-- push_jiguang-false-end -->
+        <!-- push_baidu-false-start -->
+        <!-- 百度推送 -->
+        <!-- push service start -->
+        <!-- 用于接收系统消息以保证PushService正常运行 -->
+        <receiver
+            android:name="com.baidu.android.pushservice.PushServiceReceiver"
             android:process=":bdservice_v1">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
                 <action android:name="com.baidu.android.pushservice.action.notification.SHOW" />
                 <action android:name="com.baidu.android.pushservice.action.media.CLICK" />
-                <!--以下四项为可选的action声明，可大大提高service存活率和消息到达速度-->
+                <!-- 以下四项为可选的action声明，可大大提高service存活率和消息到达速度 -->
                 <action android:name="android.intent.action.MEDIA_MOUNTED" />
                 <action android:name="android.intent.action.USER_PRESENT" />
                 <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
                 <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
             </intent-filter>
-        </receiver>
-        <!--Push服务接收客户端发送的各种请求-->
-        <receiver android:name="com.baidu.android.pushservice.RegistrationReceiver"
+        </receiver> <!-- Push服务接收客户端发送的各种请求 -->
+        <receiver
+            android:name="com.baidu.android.pushservice.RegistrationReceiver"
             android:process=":bdservice_v1">
             <intent-filter>
                 <action android:name="com.baidu.android.pushservice.action.METHOD" />
@@ -136,31 +123,27 @@
             </intent-filter>
         </receiver>
 
-        <service android:name="com.baidu.android.pushservice.PushService" android:exported="true"
+        <service
+            android:name="com.baidu.android.pushservice.PushService"
+            android:exported="true"
             android:process=":bdservice_v1">
             <intent-filter>
                 <action android:name="com.baidu.android.pushservice.action.PUSH_SERVICE" />
             </intent-filter>
-        </service>
-        <!--4.4版本新增的CommandService声明，提升小米和魅族手机上的实际推送到达率-->
-        <service android:name="com.baidu.android.pushservice.CommandService"
-            android:exported="true" />
-
-        <!-- 适配Android N系统必需的ContentProvider声明，写权限包含应用包名-->
-        <provider android:name="com.baidu.android.pushservice.PushInfoProvider"
-            android:authorities="com.gizwits.opensource.appkit.bdpush" android:exported="true"
+        </service> <!-- 4.4版本新增的CommandService声明，提升小米和魅族手机上的实际推送到达率 -->
+        <service
+            android:name="com.baidu.android.pushservice.CommandService"
+            android:exported="true" /> <!-- 适配Android N系统必需的ContentProvider声明，写权限包含应用包名 -->
+        <provider
+            android:name="com.baidu.android.pushservice.PushInfoProvider"
+            android:authorities="com.gizwits.opensource.appkit.bdpush"
+            android:exported="true"
             android:protectionLevel="signature"
-            android:writePermission="baidu.push.permission.WRITE_PUSHINFOPROVIDER.com.gizwits.opensource.appkit" />
-
-        <!--push结束-->
-
-
+            android:writePermission="baidu.push.permission.WRITE_PUSHINFOPROVIDER.com.gizwits.opensource.appkit" /> <!-- push结束 -->
         <!-- 在百度开发者中心查询应用的API Key -->
-        <meta-data android:name="api_key" android:value="BaiDu_APIKEY" />
-        <!--push_baidu-false-end-->
-        <!--push-all-end-->
-
-
+        <meta-data
+            android:name="api_key"
+            android:value="BaiDu_APIKEY" />
     </application>
 
 </manifest>
