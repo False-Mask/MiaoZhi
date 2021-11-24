@@ -107,12 +107,12 @@ class BannerViewPager<T> : RelativeLayout, LifecycleObserver {
     /**
      * 正常指示器图片
      */
-    private var normalImage = R.drawable.mine_shape_bvp_dot
+    private var normalImage = R.drawable.main_shape_bvp_dot
 
     /**
      * 选中指示器图片
      */
-    private var checkedImage = R.drawable.mine_shape_bvp_dot_selected
+    private var checkedImage = R.drawable.main_shape_bvp_dot_selected
 
 
     private val mOnPageChangeCallback: ViewPager2.OnPageChangeCallback =

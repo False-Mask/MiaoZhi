@@ -25,6 +25,7 @@ import com.example.module_device.ui.activity.GosAirlinkChooseDeviceWorkWiFiActiv
 import com.example.module_device.ui.activity.GosChooseDeviceWorkWiFiActivity
 import com.example.lib_common.utils.ToolUtils
 import com.example.module_main.ui.fragment.MainFragment
+import com.example.module_main.ui.fragment.UserFragment
 import com.google.android.material.navigation.NavigationBarView
 import zxing.CaptureActivity
 
@@ -140,11 +141,12 @@ class MainActivity :
 
     private fun initVp() {
         binding.vpContent.adapter = object : FragmentStateAdapter(this) {
-            override fun getItemCount(): Int = 2
+            override fun getItemCount(): Int = 3
 
             override fun createFragment(position: Int): Fragment = when (position) {
                 0 -> MainFragment.INSTANCE
                 1 -> GosDeviceListFragment.INSTANCE
+                2 -> UserFragment.INSTANCE
                 else -> throw RuntimeException("vp2 index error!!!!!!!!!!")
             }
 

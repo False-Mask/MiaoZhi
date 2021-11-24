@@ -38,7 +38,7 @@ android {
     sourceSets {
         main {
             //if (name.matches("lib_common")){
-                jniLibs.srcDirs = ['libs']
+            jniLibs.srcDirs = ['libs']
             //}
             if (name.matches("module_.+") && isDebug.toBoolean()) {
                 manifest.srcFile 'src/main/module/AndroidManifest.xml'
