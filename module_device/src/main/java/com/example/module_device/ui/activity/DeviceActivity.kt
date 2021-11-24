@@ -1,11 +1,13 @@
 package com.example.module_device.ui.activity
 
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Parcelable
 import android.view.View
 import android.widget.CompoundButton
 import android.widget.SeekBar
 import androidx.lifecycle.MutableLiveData
+import com.baidu.android.pushservice.c.x
 import com.example.lib_common.common.GosControlModuleBaseActivity
 import com.example.module_device.R
 import com.example.module_device.databinding.DeviceActivityDeviceBinding
@@ -17,9 +19,18 @@ import java.util.concurrent.ConcurrentHashMap
 class DeviceActivity : GosControlModuleBaseActivity() {
 
     private val temperature: MutableLiveData<Int> = MutableLiveData(-1)
-    private val humidity: MutableLiveData<Int> = MutableLiveData(-1)
     private val isConnected:MutableLiveData<Boolean> = MutableLiveData(false)
-    private var temperatureErrorInfo:Boolean = true
+    private val humidity: MutableLiveData<Int> = MutableLiveData(-1)
+
+
+
+
+    private var temperatureErrorInfo:MutableLiveData<Boolean> = MutableLiveData(true)
+    private val humidityBox: MutableLiveData<Boolean> = MutableLiveData(true)
+    private val bluetooth :MutableLiveData<Boolean> = MutableLiveData(true)
+    private val arrange :MutableLiveData<Boolean> = MutableLiveData(true)
+    private val wifi :MutableLiveData<Boolean> = MutableLiveData(true)
+
 
     private val binding: DeviceActivityDeviceBinding by lazy {
         DeviceActivityDeviceBinding.inflate(layoutInflater)
@@ -54,14 +65,6 @@ class DeviceActivity : GosControlModuleBaseActivity() {
             }
         }
 
-        humidity.observe(this) {
-            if (it == -1) {
-                binding.tvHumidity.text = "设备已断开"
-            } else {
-                binding.tvHumidity.text = "湿度$it%"
-            }
-        }
-
         isConnected.observe(this){
             if (!it){
                 binding.tvHumidometerDis.text = "设备已断开"
@@ -71,6 +74,79 @@ class DeviceActivity : GosControlModuleBaseActivity() {
                 binding.sThermometer.isChecked = true
             }
         }
+        humidity.observe(this) {
+            if (it == -1) {
+                binding.tvHumidity.text = "设备已断开"
+            } else {
+                binding.tvHumidity.text = "湿度$it%"
+            }
+        }
+
+        temperatureErrorInfo.observe(this){
+            if(it){
+                binding.apply {
+                    cvError.setCardBackgroundColor(Color.parseColor("#d8f6fd"))
+                }
+            }else{
+                binding.apply {
+                    cvError.setCardBackgroundColor(Color.parseColor("#f5fafe"))
+                }
+            }
+        }
+
+        humidityBox.observe(this){
+            if(it){
+                binding.apply {
+                    cvHumidometer.setCardBackgroundColor(Color.parseColor("#d8f6fd"))
+                    tvHumidometerDis.text = "设备已打开"
+                }
+            }else{
+                binding.apply {
+                    cvHumidometer.setCardBackgroundColor(Color.parseColor("#f5fafe"))
+                    tvHumidometerDis.text = "设备已关闭"
+                }
+            }
+        }
+        bluetooth.observe(this){
+            if(it){
+                binding.apply {
+                    cvBluetooth.setCardBackgroundColor(Color.parseColor("#d8f6fd"))
+                    tvBluetooth2.text = "蓝牙已打开"
+                }
+            }else{
+                binding.apply {
+                    cvBluetooth.setCardBackgroundColor(Color.parseColor("#f5fafe"))
+                    tvBluetooth2.text = "蓝牙已关闭"
+                }
+            }
+        }
+        arrange.observe(this){
+            if(it){
+                binding.apply {
+                    cvSocket.setCardBackgroundColor(Color.parseColor("#d8f6fd"))
+                    tvSocket2.text = "插排已开启"
+                }
+            }else{
+                binding.apply {
+                    cvSocket.setCardBackgroundColor(Color.parseColor("#f5fafe"))
+                    tvSocket2.text = "插排已关闭"
+                }
+            }
+        }
+        wifi.observe(this){
+            if(it){
+                binding.apply {
+                    cvWifi.setCardBackgroundColor(Color.parseColor("#d8f6fd"))
+                    tvWifi2.text = "网络已打开"
+                }
+            }else{
+                binding.apply {
+                    cvWifi.setCardBackgroundColor(Color.parseColor("#f5fafe"))
+                    tvWifi2.text = "网络已关闭"
+                }
+            }
+        }
+
     }
 
     private fun initDevice() {
@@ -162,8 +238,6 @@ class DeviceActivity : GosControlModuleBaseActivity() {
         override fun onClick(v: View?) {
             v ?: return
             when (v.id) {
-
-
             }
         }
 
@@ -180,7 +254,19 @@ class DeviceActivity : GosControlModuleBaseActivity() {
             buttonView ?: return
             when(buttonView.id){
                 R.id.s_error->{
-                    temperatureErrorInfo = isChecked
+                    temperatureErrorInfo.value = isChecked
+                }
+                R.id.s_thermometer -> {
+                    humidityBox.value = isChecked
+                }
+                R.id.s_bluetooth -> {
+                    bluetooth.value = isChecked
+                }
+                R.id.s_socket ->{
+                    arrange.value = isChecked
+                }
+                R.id.s_wifi ->{
+                    wifi.value = isChecked
                 }
             }
         }
