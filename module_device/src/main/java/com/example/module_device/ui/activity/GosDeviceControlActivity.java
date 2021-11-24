@@ -29,8 +29,8 @@ import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
 
 import com.example.module_device.R;
-import com.example.module_device.common.GosControlModuleBaseActivity;
-import com.example.module_device.common.GosDeploy;
+import com.example.lib_common.common.GosControlModuleBaseActivity;
+import com.example.lib_common.common.GosDeploy;
 import com.gizwits.gizwifisdk.api.GizWifiDevice;
 import com.gizwits.gizwifisdk.enumration.GizWifiDeviceNetStatus;
 import com.gizwits.gizwifisdk.enumration.GizWifiErrorCode;

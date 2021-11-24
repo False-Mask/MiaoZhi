@@ -20,13 +20,13 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.module_device.common.GosConfigModuleBaseActivity;
+import com.example.lib_common.common.GosConfigModuleBaseActivity;
 import com.example.module_device.config.GosWifiChangeReciver;
-import com.example.module_device.model.GosConstant;
+import com.example.lib_common.model.GosConstant;
 import com.example.module_device.R;
-import com.example.module_device.common.GosDeploy;
-import com.example.module_device.utils.NetUtils;
-import com.example.module_device.view.RoundProgressBar;
+import com.example.lib_common.common.GosDeploy;
+import com.example.lib_common.utils.NetUtils;
+import com.example.lib_common.view.RoundProgressBar;
 import com.gizwits.gizwifisdk.api.GizWifiSDK;
 import com.gizwits.gizwifisdk.api.WifiAutoConnectManager;
 import com.gizwits.gizwifisdk.enumration.GizWifiConfigureMode;

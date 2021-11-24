@@ -36,10 +36,10 @@ import androidx.core.app.ActivityCompat;
 
 //import com.example.module_device.GosMainActivity;
 import com.example.module_device.R;
-import com.example.module_device.common.GosDeploy;
-import com.example.module_device.common.GosConfigModuleBaseActivity;
-import com.example.module_device.utils.NetUtils;
-import com.example.module_device.utils.ToolUtils;
+import com.example.lib_common.common.GosDeploy;
+import com.example.lib_common.common.GosConfigModuleBaseActivity;
+import com.example.lib_common.utils.NetUtils;
+import com.example.lib_common.utils.ToolUtils;
 
 import org.json.JSONArray;
 import org.json.JSONException;

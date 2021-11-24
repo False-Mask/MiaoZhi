@@ -6,8 +6,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.wifi.WifiManager;
 
-import com.example.module_device.common.GosBaseActivity;
-import com.example.module_device.utils.NetUtils;
+import com.example.lib_common.common.GosBaseActivity;
+import com.example.lib_common.utils.NetUtils;
 import com.gizwits.gizwifisdk.api.WifiAutoConnectManager;
 
 

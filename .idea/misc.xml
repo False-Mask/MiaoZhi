@@ -14,6 +14,9 @@
         <entry key="..\:/Code/Android/Up/MiaoZhi/module_device/src/main/res/drawable/alert_bottom_left_shape.xml" value="0.12777777777777777" />
         <entry key="..\:/Code/Android/Up/MiaoZhi/module_device/src/main/res/drawable/border_layer_list.xml" value="0.2361111111111111" />
         <entry key="..\:/Code/Android/Up/MiaoZhi/module_device/src/main/res/drawable/common_page_back_button.xml" value="0.2361111111111111" />
+        <entry key="..\:/Code/Android/Up/MiaoZhi/module_device/src/main/res/drawable/ic_device_air.xml" value="0.2361111111111111" />
+        <entry key="..\:/Code/Android/Up/MiaoZhi/module_device/src/main/res/drawable/ic_device_thermometer.xml" value="0.2361111111111111" />
+        <entry key="..\:/Code/Android/Up/MiaoZhi/module_device/src/main/res/drawable/ic_toolbar_nav.xml" value="0.2361111111111111" />
         <entry key="..\:/Code/Android/Up/MiaoZhi/module_device/src/main/res/layout/activity_device_item.xml" value="0.1" />
         <entry key="..\:/Code/Android/Up/MiaoZhi/module_device/src/main/res/layout/activity_gos_airlink_choose_device_workwifi.xml" value="0.11342592592592593" />
         <entry key="..\:/Code/Android/Up/MiaoZhi/module_device/src/main/res/layout/activity_gos_airlink_config_countdown.xml" value="0.11805555555555555" />
@@ -22,8 +25,8 @@
         <entry key="..\:/Code/Android/Up/MiaoZhi/module_device/src/main/res/layout/activity_gos_choose_module_help.xml" value="0.11805555555555555" />
         <entry key="..\:/Code/Android/Up/MiaoZhi/module_device/src/main/res/layout/activity_gos_config_countdown.xml" value="0.11805555555555555" />
         <entry key="..\:/Code/Android/Up/MiaoZhi/module_device/src/main/res/layout/activity_gos_config_failed.xml" value="0.1" />
-        <entry key="..\:/Code/Android/Up/MiaoZhi/module_device/src/main/res/layout/activity_gos_device_control.xml" value="0.11342592592592593" />
-        <entry key="..\:/Code/Android/Up/MiaoZhi/module_device/src/main/res/layout/activity_gos_device_list.xml" value="0.14855072463768115" />
+        <entry key="..\:/Code/Android/Up/MiaoZhi/module_device/src/main/res/layout/activity_gos_device_control.xml" value="0.4" />
+        <entry key="..\:/Code/Android/Up/MiaoZhi/module_device/src/main/res/layout/activity_gos_device_list.xml" value="0.2" />
         <entry key="..\:/Code/Android/Up/MiaoZhi/module_device/src/main/res/layout/activity_gos_device_ready.xml" value="0.11805555555555555" />
         <entry key="..\:/Code/Android/Up/MiaoZhi/module_device/src/main/res/layout/activity_gos_modelist.xml" value="0.11805555555555555" />
         <entry key="..\:/Code/Android/Up/MiaoZhi/module_device/src/main/res/layout/actvity_gos_airlink_ready.xml" value="0.11805555555555555" />
@@ -35,6 +38,8 @@
         <entry key="..\:/Code/Android/Up/MiaoZhi/module_device/src/main/res/layout/alert_gos_tip.xml" value="0.11342592592592593" />
         <entry key="..\:/Code/Android/Up/MiaoZhi/module_device/src/main/res/layout/alert_gos_wifi.xml" value="0.11342592592592593" />
         <entry key="..\:/Code/Android/Up/MiaoZhi/module_device/src/main/res/layout/alert_gos_wifi_list.xml" value="0.22175925925925927" />
+        <entry key="..\:/Code/Android/Up/MiaoZhi/module_device/src/main/res/layout/device_activity_controller.xml" value="0.20471014492753623" />
+        <entry key="..\:/Code/Android/Up/MiaoZhi/module_device/src/main/res/layout/device_activity_device.xml" value="0.4" />
         <entry key="..\:/Code/Android/Up/MiaoZhi/module_device/src/main/res/layout/header_toolbar.xml" value="0.16799999999999998" />
         <entry key="..\:/Code/Android/Up/MiaoZhi/module_device/src/main/res/layout/item_gos_device_list.xml" value="0.11342592592592593" />
         <entry key="..\:/Code/Android/Up/MiaoZhi/module_device/src/main/res/layout/item_gos_mode_list.xml" value="0.11342592592592593" />

@@ -19,11 +19,11 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.miaozhi.databinding.ActivityMainBinding
 import com.example.module_device.ui.fragment.GosDeviceListFragment
-import com.example.module_device.common.GosDeviceModuleBaseActivity
-import com.example.module_device.common.GosDeploy
+import com.example.lib_common.common.GosDeviceModuleBaseActivity
+import com.example.lib_common.common.GosDeploy
 import com.example.module_device.ui.activity.GosAirlinkChooseDeviceWorkWiFiActivity
 import com.example.module_device.ui.activity.GosChooseDeviceWorkWiFiActivity
-import com.example.module_device.utils.ToolUtils
+import com.example.lib_common.utils.ToolUtils
 import com.example.module_main.ui.fragment.MainFragment
 import com.google.android.material.navigation.NavigationBarView
 import zxing.CaptureActivity

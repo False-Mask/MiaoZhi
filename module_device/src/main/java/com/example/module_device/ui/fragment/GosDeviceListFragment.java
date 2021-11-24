@@ -37,13 +37,14 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.example.module_device.adapter.GosDeviceListAdapter;
 import com.example.module_device.GosMessageHandler;
 import com.example.module_device.R;
-import com.example.module_device.common.GosDeploy;
-import com.example.module_device.common.GosDeviceModuleBaseFragment;
+import com.example.lib_common.common.GosDeploy;
+import com.example.lib_common.common.GosDeviceModuleBaseFragment;
+import com.example.module_device.ui.activity.DeviceActivity;
 import com.example.module_device.ui.activity.GosAirlinkChooseDeviceWorkWiFiActivity;
 import com.example.module_device.ui.activity.GosChooseDeviceWorkWiFiActivity;
 import com.example.module_device.ui.activity.GosDeviceControlActivity;
-import com.example.module_device.view.SlideListView2;
-import com.example.module_device.view.VerticalSwipeRefreshLayout;
+import com.example.lib_common.view.SlideListView2;
+import com.example.lib_common.view.VerticalSwipeRefreshLayout;
 import com.gizwits.gizwifisdk.api.GizDeviceSharing;
 import com.gizwits.gizwifisdk.api.GizWifiDevice;
 import com.gizwits.gizwifisdk.api.GizWifiSDK;
@@ -245,7 +246,7 @@ public class GosDeviceListFragment extends GosDeviceModuleBaseFragment implement
                     break;
 
                 case BOUND:
-
+                    Log.e(TAG, "handleMessage: " );
                     break;
 
                 case UNBOUND:
@@ -260,7 +261,7 @@ public class GosDeviceListFragment extends GosDeviceModuleBaseFragment implement
                     Bundle bundle = new Bundle();
                     GizWifiDevice device = (GizWifiDevice) msg.obj;
                     if (intent == null) {
-                        intent = new Intent(getContext(), GosDeviceControlActivity.class);
+                        intent = new Intent(getContext(), DeviceActivity.class);
                     }
                     bundle.putParcelable("GizWifiDevice", device);
                     intent.putExtras(bundle);
@@ -572,7 +573,7 @@ public class GosDeviceListFragment extends GosDeviceModuleBaseFragment implement
             /*if (GosDeploy.appConfig_Push_BaiDu()) {
                 GosPushManager.pushBindService(token);
             }
-            if (GosDeploy.appConfig_Push_JiGuang()) {
+            if (GosDeploy.appConfig_Push_JiGuang()) {、
                 GosPushManager.pushBindService(token);
             }*/
         } else {

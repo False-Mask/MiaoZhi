@@ -24,7 +24,7 @@
             android:paddingRight="85dp"
             android:paddingTop="50dp">
 
-            <com.example.module_device.view.RoundProgressBar
+            <com.example.lib_common.view.RoundProgressBar
                 android:id="@+id/rpbConfig"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

@@ -12,9 +12,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.module_device.R;
-import com.example.module_device.common.GosDeploy;
-import com.example.module_device.common.GosConfigModuleBaseActivity;
-import com.example.module_device.utils.ToolUtils;
+import com.example.lib_common.common.GosDeploy;
+import com.example.lib_common.common.GosConfigModuleBaseActivity;
+import com.example.lib_common.utils.ToolUtils;
 
 public class GosConfigFailedActivity extends GosConfigModuleBaseActivity implements OnClickListener {
 

@@ -35,11 +35,11 @@ import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
 
-import com.example.module_device.common.GosConfigModuleBaseActivity;
-import com.example.module_device.model.GosConstant;
+import com.example.lib_common.common.GosConfigModuleBaseActivity;
+import com.example.lib_common.model.GosConstant;
 import com.example.module_device.R;
-import com.example.module_device.common.GosDeploy;
-import com.example.module_device.utils.NetUtils;
+import com.example.lib_common.common.GosDeploy;
+import com.example.lib_common.utils.NetUtils;
 
 import org.json.JSONArray;
 import org.json.JSONException;

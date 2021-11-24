@@ -19,8 +19,8 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.module_device.R;
-import com.example.module_device.common.GosDeploy;
-import com.example.module_device.utils.AssetsUtils;
+import com.example.lib_common.common.GosDeploy;
+import com.example.lib_common.utils.AssetsUtils;
 import com.gizwits.gizwifisdk.api.GizWifiCentralControlDevice;
 import com.gizwits.gizwifisdk.api.GizWifiDevice;
 import com.gizwits.gizwifisdk.enumration.GizDeviceSharingUserRole;

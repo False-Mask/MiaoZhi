@@ -21,10 +21,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.example.module_device.common.GosConfigModuleBaseActivity;
-import com.example.module_device.model.GosConstant;
+import com.example.lib_common.common.GosConfigModuleBaseActivity;
+import com.example.lib_common.model.GosConstant;
 import com.example.module_device.R;
-import com.example.module_device.utils.AssetsUtils;
+import com.example.lib_common.utils.AssetsUtils;
 
 import java.util.ArrayList;
 import java.util.Timer;

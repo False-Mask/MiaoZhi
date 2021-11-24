@@ -39,7 +39,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.module_device.common.GosBaseActivity;
+import com.example.lib_common.common.GosBaseActivity;
 import com.example.module_device.ui.fragment.GosDeviceListFragment;
 import com.example.module_device.R;
 import com.google.zxing.Result;
@@ -49,6 +49,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.util.Arrays;
 
 import zxing.camera.CameraManager;
 import zxing.decoding.DecodeThread;
@@ -108,9 +109,7 @@ public final class CaptureActivity extends GosBaseActivity implements SurfaceHol
 
                 case START_BIND:
                     String[] strings = (String[]) msg.obj;
-                    for (String string : strings) {
-                        GosDeviceListFragment.boundMessage.add(string);
-                    }
+                    GosDeviceListFragment.boundMessage.addAll(Arrays.asList(strings));
                     finish();
                     break;
                 case SEND_CODE:
@@ -140,7 +139,7 @@ public final class CaptureActivity extends GosBaseActivity implements SurfaceHol
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        getWindow().setStatusBarColor(getResources().getColor(R.color.black));
         /**
          * 设置为竖屏
          */
