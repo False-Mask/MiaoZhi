@@ -64,6 +64,9 @@
 
     <application>
         <activity
+            android:name=".ui.activity.NotificationActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activity.DeviceActivity"
             android:exported="false" />
         <activity android:name=".ui.activity.GosDeviceControlActivity" />

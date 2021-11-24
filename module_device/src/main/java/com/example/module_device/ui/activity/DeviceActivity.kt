@@ -15,6 +15,18 @@ import com.gizwits.gizwifisdk.api.GizWifiDevice
 import com.gizwits.gizwifisdk.enumration.GizWifiDeviceNetStatus
 import com.gizwits.gizwifisdk.enumration.GizWifiErrorCode
 import java.util.concurrent.ConcurrentHashMap
+import android.app.NotificationManager
+
+import android.app.NotificationChannel
+
+
+import android.app.PendingIntent
+
+import android.content.Intent
+import android.graphics.BitmapFactory
+import android.os.Build
+import androidx.core.app.NotificationCompat
+
 
 class DeviceActivity : GosControlModuleBaseActivity() {
 
@@ -32,12 +44,41 @@ class DeviceActivity : GosControlModuleBaseActivity() {
     private val arrange: MutableLiveData<Boolean> = MutableLiveData(true)
     private val wifi: MutableLiveData<Boolean> = MutableLiveData(true)
 
+    val alert:SingleLiveEvent<Boolean> = SingleLiveEvent()
+
     val alert1:SingleLiveEvent<Boolean> = SingleLiveEvent()
     val alert2:SingleLiveEvent<Boolean> = SingleLiveEvent()
 
 
     private val binding: DeviceActivityDeviceBinding by lazy {
         DeviceActivityDeviceBinding.inflate(layoutInflater)
+    }
+
+    private val NOTIFY_ID = 100
+
+    private fun showNotification() {
+        val manager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+        val hangIntent = Intent(this, NotificationActivity::class.java)
+        val hangPendingIntent =
+            PendingIntent.getActivity(this, 1001, hangIntent, PendingIntent.FLAG_UPDATE_CURRENT)
+        val CHANNEL_ID = "ID" //应用频道Id唯一值， 长度若太长可能会被截断，
+        val CHANNEL_NAME = "NAME" //最长40个字符，太长会被截断
+        val notification = NotificationCompat.Builder(this, CHANNEL_ID)
+            .setContentTitle("温湿度异常")
+            .setContentText("点击查看")
+            .setSmallIcon(R.mipmap.ic_launcher)
+            .setContentIntent(hangPendingIntent)
+           /* .setLargeIcon(BitmapFactory.decodeResource(resources, com.example.module_device.R.mipmap.head))*/
+            .setAutoCancel(true)
+            .build()
+
+        //Android 8.0 以上需包添加渠道
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val notificationChannel = NotificationChannel(CHANNEL_ID,
+                CHANNEL_NAME, NotificationManager.IMPORTANCE_LOW)
+            manager.createNotificationChannel(notificationChannel)
+        }
+        manager.notify(NOTIFY_ID, notification)
     }
 
     private lateinit var mDevice: GizWifiDevice
@@ -66,6 +107,7 @@ class DeviceActivity : GosControlModuleBaseActivity() {
                 binding.tvTemperature.text = "设备已断开"
             } else {
                 binding.tvTemperature.text = "温度$it℃"
+                alert.value = it >=40 || it<=20
             }
         }
 
@@ -134,16 +176,22 @@ class DeviceActivity : GosControlModuleBaseActivity() {
             }
         }
 
-        alert1.observe(this){
+        /*alert1.observe(this){
             if (it && temperatureErrorInfo.value == true){
-                myToast("Alert1")
+                showNotification()
             }
         }
 
 
         alert2.observe(this){
             if (it && temperatureErrorInfo.value == true){
-                myToast("Alert2")
+                showNotification()
+            }
+        }*/
+
+        alert.observe(this){
+            if (it){
+                showNotification()
             }
         }
 
@@ -187,7 +235,8 @@ class DeviceActivity : GosControlModuleBaseActivity() {
     ) {
         parseData(dataMap,
             {
-
+                alert1.value = it["Alert_1"] as? Boolean ?: false
+                alert2.value = it["Alert_2"] as? Boolean ?: false
             }, {
                 temperature.value = it["Temperature"] as? Int ?: Int.MIN_VALUE
                 humidity.value = it["Humidity"] as? Int ?: Int.MIN_VALUE

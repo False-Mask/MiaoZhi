@@ -344,4 +344,14 @@
         app:layout_constraintStart_toStartOf="@+id/cv_thermometer"
         app:layout_constraintTop_toBottomOf="@+id/cv_thermometer" />
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="电机转数"
+        app:layout_constraintBottom_toTopOf="@+id/sb_motor_speed"
+        app:layout_constraintStart_toStartOf="@+id/sb_motor_speed" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -18,7 +18,7 @@ import com.example.module_main.view.BaseBannerAdapter
 
 class MainFragment : Fragment() {
 
-    companion object{
+    companion object {
         val INSTANCE = MainFragment()
     }
 
@@ -34,7 +34,7 @@ class MainFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
         return binding.root
@@ -78,10 +78,10 @@ class MainFragment : Fragment() {
             })
                 .create(
                     listOf(
-                        R.drawable.main_ic_center_goods,
-                        R.drawable.main_ic_center_goods,
-                        R.drawable.main_ic_center_goods
-                    )
+                        R.drawable.ic_banner_1,
+                        R.drawable.ic_banner_2,
+                        R.drawable.ic_banner_3,
+                        R.drawable.ic_banner_4)
                 )
 
         }
