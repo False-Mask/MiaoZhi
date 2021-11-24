@@ -18,6 +18,10 @@ import com.example.module_main.view.BaseBannerAdapter
 
 class MainFragment : Fragment() {
 
+    companion object{
+        val INSTANCE = MainFragment()
+    }
+
     private lateinit var mainBvp: BannerViewPager<Int>
 
     private val binding: MainFragmentMainBinding by lazy {

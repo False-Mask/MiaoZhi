@@ -1,12 +1,12 @@
 //Android 代码块的内容
 def Android = [:]
-Android.CompileSdk = 31
+Android.CompileSdk = 28
 ext.Android = Android
 
 //DefaultConfig代码内部的内容
 def DefaultConfig = [:]
 DefaultConfig.MinSdk = 21
-DefaultConfig.TargetSdk = 31
+DefaultConfig.TargetSdk = 28
 DefaultConfig.VersionCode = 1
 DefaultConfig.VersionName = "1.0"
 Android.DefaultConfig = DefaultConfig
@@ -44,7 +44,7 @@ def baseDependency = [
         //Hilt
         "com.google.dagger:hilt-android:$hiltVersion",
         //Navigation
-        "androidx.navigation:navigation-fragment-ktx:$navigationVersion" ,
+        "androidx.navigation:navigation-fragment-ktx:$navigationVersion",
         "androidx.navigation:navigation-ui-ktx:$navigationVersion",
         //Okhttp
         "com.squareup.okhttp3:okhttp:$okhttpVersion",
@@ -57,7 +57,8 @@ def baseDependency = [
         //Glide
         "com.github.bumptech.glide:glide:$glideVersion",
         //material
-        "com.google.android.material:material:$materialVersion"
+        "com.google.android.material:material:$materialVersion",
+
 ]
 
 def kaptDependency = [

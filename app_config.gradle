@@ -9,8 +9,16 @@ apply plugin: "kotlin-android"
 apply plugin: 'dagger.hilt.android.plugin'
 
 android {
+    /*splits {
+        abi {
+            enable true
+            reset()
+            include "arm64-v8a",'x86', 'armeabi-v7a', 'x86_64', "armeabi"
+            universalApk true
+        }
+    }*/
     compileSdk Android.CompileSdk
-
+    buildToolsVersion '30.0.3'
     //默认配置选项
     defaultConfig {
         if (isDebug.toBoolean() && name.matches("module_.+") || name.matches("app")) {
@@ -20,19 +28,22 @@ android {
         targetSdk Android.DefaultConfig.TargetSdk
         versionCode Android.DefaultConfig.VersionCode
         versionName Android.DefaultConfig.VersionName
-
+        ndk {
+            abiFilters "armeabi", "arm64-v8a"
+        }
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     //Manifest位置
     sourceSets {
-        if (name.matches("module_.+")) {
-            if (isDebug.toBoolean()) {
-                main{
-                    manifest.srcFile 'src/main/module/AndroidManifest.xml'
-                }
-                //main.manifest.srcFile 'src/main/module/AndroidManifest.xml'
+        main {
+            //if (name.matches("lib_common")){
+            jniLibs.srcDirs = ['libs']
+            //}
+            if (name.matches("module_.+") && isDebug.toBoolean()) {
+                manifest.srcFile 'src/main/module/AndroidManifest.xml'
             }
+            //main.manifest.srcFile 'src/main/module/AndroidManifest.xml'
         }
         /*java{
             exclude "debug/**"

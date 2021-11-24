@@ -10,6 +10,10 @@ import com.example.module_main.R
 
 class UserFragment : Fragment() {
 
+    companion object{
+        val INSTANCE = UserFragment()
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
