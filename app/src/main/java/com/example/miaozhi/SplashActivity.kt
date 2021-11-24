@@ -2,6 +2,7 @@ package com.example.miaozhi
 
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
@@ -26,7 +27,7 @@ class SplashActivity : AppCompatActivity(), ActivityCompat.OnRequestPermissionsR
     //push-all-end
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        window.statusBarColor = Color.parseColor("#ebba95")
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

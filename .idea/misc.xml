@@ -4,11 +4,14 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Code/Android/Up/MiaoZhi/app/src/main/res/drawable/ic_app_main.xml" value="0.2361111111111111" />
+        <entry key="..\:/Code/Android/Up/MiaoZhi/app/src/main/res/drawable/ic_dog.xml" value="0.12361111111111112" />
+        <entry key="..\:/Code/Android/Up/MiaoZhi/app/src/main/res/drawable/ic_launcher_background.xml" value="0.10694444444444444" />
         <entry key="..\:/Code/Android/Up/MiaoZhi/app/src/main/res/layout/activity_main.xml" value="0.2557291666666667" />
-        <entry key="..\:/Code/Android/Up/MiaoZhi/app/src/main/res/layout/activity_splash.xml" value="0.22175925925925927" />
+        <entry key="..\:/Code/Android/Up/MiaoZhi/app/src/main/res/layout/activity_splash.xml" value="0.13867979154603358" />
         <entry key="..\:/Code/Android/Up/MiaoZhi/app/src/main/res/layout/app_fragment_content.xml" value="0.23125" />
         <entry key="..\:/Code/Android/Up/MiaoZhi/app/src/main/res/menu/app_menu.xml" value="0.22175925925925927" />
         <entry key="..\:/Code/Android/Up/MiaoZhi/app/src/main/res/menu/menu_app.xml" value="0.22175925925925927" />
+        <entry key="..\:/Code/Android/Up/MiaoZhi/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.12361111111111112" />
         <entry key="..\:/Code/Android/Up/MiaoZhi/lib_common/src/main/res/drawable/thumb.xml" value="0.2361111111111111" />
         <entry key="..\:/Code/Android/Up/MiaoZhi/lib_common/src/main/res/layout/alert_gos_quit.xml" value="0.10817524841915085" />
         <entry key="..\:/Code/Android/Up/MiaoZhi/module_device/src/main/res/drawable/alert_bottom_left_shape.xml" value="0.12777777777777777" />
