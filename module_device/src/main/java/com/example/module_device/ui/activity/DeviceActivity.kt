@@ -7,7 +7,7 @@ import android.view.View
 import android.widget.CompoundButton
 import android.widget.SeekBar
 import androidx.lifecycle.MutableLiveData
-import com.baidu.android.pushservice.c.x
+import com.example.lib_base.base.SingleLiveEvent
 import com.example.lib_common.common.GosControlModuleBaseActivity
 import com.example.module_device.R
 import com.example.module_device.databinding.DeviceActivityDeviceBinding
@@ -18,18 +18,22 @@ import java.util.concurrent.ConcurrentHashMap
 
 class DeviceActivity : GosControlModuleBaseActivity() {
 
-    private val temperature: MutableLiveData<Int> = MutableLiveData(-1)
-    private val isConnected:MutableLiveData<Boolean> = MutableLiveData(false)
-    private val humidity: MutableLiveData<Int> = MutableLiveData(-1)
+    private val temperature: MutableLiveData<Int> = MutableLiveData(Int.MIN_VALUE)
+    private val isConnected: MutableLiveData<Boolean> = MutableLiveData(false)
+    private val humidity: MutableLiveData<Int> = MutableLiveData(Int.MIN_VALUE)
+
+    private val motorSpeed: MutableLiveData<Int> = MutableLiveData(Int.MIN_VALUE)
+    private var motorMax: Int = 10
 
 
-
-
-    private var temperatureErrorInfo:MutableLiveData<Boolean> = MutableLiveData(true)
+    private var temperatureErrorInfo: MutableLiveData<Boolean> = MutableLiveData(true)
     private val humidityBox: MutableLiveData<Boolean> = MutableLiveData(true)
-    private val bluetooth :MutableLiveData<Boolean> = MutableLiveData(true)
-    private val arrange :MutableLiveData<Boolean> = MutableLiveData(true)
-    private val wifi :MutableLiveData<Boolean> = MutableLiveData(true)
+    private val light: MutableLiveData<Boolean> = MutableLiveData(true)
+    private val arrange: MutableLiveData<Boolean> = MutableLiveData(true)
+    private val wifi: MutableLiveData<Boolean> = MutableLiveData(true)
+
+    val alert1:SingleLiveEvent<Boolean> = SingleLiveEvent()
+    val alert2:SingleLiveEvent<Boolean> = SingleLiveEvent()
 
 
     private val binding: DeviceActivityDeviceBinding by lazy {
@@ -58,92 +62,88 @@ class DeviceActivity : GosControlModuleBaseActivity() {
 
     private fun initObserver() {
         temperature.observe(this) {
-            if (it == -1) {
+            if (it == Int.MIN_VALUE) {
                 binding.tvTemperature.text = "设备已断开"
             } else {
                 binding.tvTemperature.text = "温度$it℃"
             }
         }
 
-        isConnected.observe(this){
-            if (!it){
+        isConnected.observe(this) {
+            if (!it) {
                 binding.tvHumidometerDis.text = "设备已断开"
                 binding.sThermometer.isChecked = false
-            }else{
+            } else {
                 binding.tvHumidometerDis.text = "设备已打开"
                 binding.sThermometer.isChecked = true
             }
         }
+
         humidity.observe(this) {
-            if (it == -1) {
+            if (it == Int.MIN_VALUE) {
                 binding.tvHumidity.text = "设备已断开"
             } else {
                 binding.tvHumidity.text = "湿度$it%"
             }
         }
 
-        temperatureErrorInfo.observe(this){
-            if(it){
+        temperatureErrorInfo.observe(this) {
+            if (it) {
                 binding.apply {
                     cvError.setCardBackgroundColor(Color.parseColor("#d8f6fd"))
                 }
-            }else{
+            } else {
                 binding.apply {
                     cvError.setCardBackgroundColor(Color.parseColor("#f5fafe"))
                 }
             }
         }
 
-        humidityBox.observe(this){
-            if(it){
+        humidityBox.observe(this) {
+            if (it) {
                 binding.apply {
                     cvHumidometer.setCardBackgroundColor(Color.parseColor("#d8f6fd"))
                     tvHumidometerDis.text = "设备已打开"
                 }
-            }else{
+            } else {
                 binding.apply {
                     cvHumidometer.setCardBackgroundColor(Color.parseColor("#f5fafe"))
                     tvHumidometerDis.text = "设备已关闭"
                 }
             }
         }
-        bluetooth.observe(this){
-            if(it){
+
+        motorSpeed.observe(this) {
+            binding.sbMotorSpeed.max = motorMax
+            binding.sbMotorSpeed.progress = motorSpeed.value?.plus(5) ?: 0
+        }
+
+        light.observe(this) {
+            if (it) {
                 binding.apply {
                     cvBluetooth.setCardBackgroundColor(Color.parseColor("#d8f6fd"))
-                    tvBluetooth2.text = "蓝牙已打开"
+                    tvLight2.text = "灯已打开"
+                    sLight.isChecked = true
                 }
-            }else{
+            } else {
                 binding.apply {
                     cvBluetooth.setCardBackgroundColor(Color.parseColor("#f5fafe"))
-                    tvBluetooth2.text = "蓝牙已关闭"
+                    tvLight2.text = "灯已关闭"
+                    sLight.isChecked = false
                 }
             }
         }
-        arrange.observe(this){
-            if(it){
-                binding.apply {
-                    cvSocket.setCardBackgroundColor(Color.parseColor("#d8f6fd"))
-                    tvSocket2.text = "插排已开启"
-                }
-            }else{
-                binding.apply {
-                    cvSocket.setCardBackgroundColor(Color.parseColor("#f5fafe"))
-                    tvSocket2.text = "插排已关闭"
-                }
+
+        alert1.observe(this){
+            if (it && temperatureErrorInfo.value == true){
+                myToast("Alert1")
             }
         }
-        wifi.observe(this){
-            if(it){
-                binding.apply {
-                    cvWifi.setCardBackgroundColor(Color.parseColor("#d8f6fd"))
-                    tvWifi2.text = "网络已打开"
-                }
-            }else{
-                binding.apply {
-                    cvWifi.setCardBackgroundColor(Color.parseColor("#f5fafe"))
-                    tvWifi2.text = "网络已关闭"
-                }
+
+
+        alert2.observe(this){
+            if (it && temperatureErrorInfo.value == true){
+                myToast("Alert2")
             }
         }
 
@@ -153,27 +153,27 @@ class DeviceActivity : GosControlModuleBaseActivity() {
         mDevice = intent.getParcelableExtra<Parcelable>("GizWifiDevice") as GizWifiDevice
         mDevice.listener = gizWifiDeviceListener
         isConnected.value =
-            !(mDevice.netStatus == GizWifiDeviceNetStatus.GizDeviceOffline ||mDevice.netStatus == GizWifiDeviceNetStatus.GizDeviceUnavailable)
+            !(mDevice.netStatus == GizWifiDeviceNetStatus.GizDeviceOffline || mDevice.netStatus == GizWifiDeviceNetStatus.GizDeviceUnavailable)
     }
 
     private fun initEvent() {
         val handler = EventHandler()
         binding.tbBar.setNavigationOnClickListener { finish() }
 
-        binding.sBluetooth.setOnCheckedChangeListener(handler)
         binding.sError.setOnCheckedChangeListener(handler)
-        binding.sSocket.setOnCheckedChangeListener(handler)
-        binding.sWifi.setOnCheckedChangeListener(handler)
+        binding.sLight.setOnCheckedChangeListener(handler)
+        binding.sbMotorSpeed.setOnSeekBarChangeListener(handler)
+        binding.sThermometer.setOnCheckedChangeListener(handler)
 
     }
 
     override fun didUpdateNetStatus(device: GizWifiDevice?, netStatus: GizWifiDeviceNetStatus) {
-        if (netStatus == GizWifiDeviceNetStatus.GizDeviceOffline){
+        if (netStatus == GizWifiDeviceNetStatus.GizDeviceOffline) {
             myToast("设备已断开")
-            temperature.value = -1
-            temperature.value = -1
+            temperature.value = Int.MIN_VALUE
+            temperature.value = Int.MIN_VALUE
             isConnected.value = false
-        }else{
+        } else {
             isConnected.value = true
         }
         super.didUpdateNetStatus(device, netStatus)
@@ -189,8 +189,11 @@ class DeviceActivity : GosControlModuleBaseActivity() {
             {
 
             }, {
-                temperature.value = it["temperature"] as? Int ?: -1
-                humidity.value = it["humidity"] as? Int ?: -1
+                temperature.value = it["Temperature"] as? Int ?: Int.MIN_VALUE
+                humidity.value = it["Humidity"] as? Int ?: Int.MIN_VALUE
+                motorSpeed.value = it["Motor_Speed"] as? Int ?: Int.MIN_VALUE
+                light.value = it["LED_OnOff"] as? Boolean ?: false
+
             }, {
 
             })
@@ -248,25 +251,31 @@ class DeviceActivity : GosControlModuleBaseActivity() {
         }
 
         override fun onStopTrackingTouch(seekBar: SeekBar?) {
+            seekBar ?: return
+            writeToService()
+        }
+
+        private fun writeToService() {
+            val dates = ConcurrentHashMap<String, Any>()
+            dates.apply {
+                put("LED_OnOff", binding.sLight.isChecked)
+                put("Motor_Speed", binding.sbMotorSpeed.progress - 5)
+            }
+            mDevice.write(dates, 1)
         }
 
         override fun onCheckedChanged(buttonView: CompoundButton?, isChecked: Boolean) {
             buttonView ?: return
-            when(buttonView.id){
-                R.id.s_error->{
+            when (buttonView.id) {
+                R.id.s_error -> {
                     temperatureErrorInfo.value = isChecked
                 }
                 R.id.s_thermometer -> {
                     humidityBox.value = isChecked
                 }
-                R.id.s_bluetooth -> {
-                    bluetooth.value = isChecked
-                }
-                R.id.s_socket ->{
-                    arrange.value = isChecked
-                }
-                R.id.s_wifi ->{
-                    wifi.value = isChecked
+                R.id.s_light -> {
+                    light.value = isChecked
+                    writeToService()
                 }
             }
         }
