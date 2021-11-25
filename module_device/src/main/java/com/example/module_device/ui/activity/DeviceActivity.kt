@@ -1,11 +1,18 @@
 package com.example.module_device.ui.activity
 
+
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.content.Intent
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.os.Parcelable
 import android.view.View
 import android.widget.CompoundButton
 import android.widget.SeekBar
+import androidx.core.app.NotificationCompat
 import androidx.lifecycle.MutableLiveData
 import com.example.lib_base.base.SingleLiveEvent
 import com.example.lib_common.common.GosControlModuleBaseActivity
@@ -15,17 +22,6 @@ import com.gizwits.gizwifisdk.api.GizWifiDevice
 import com.gizwits.gizwifisdk.enumration.GizWifiDeviceNetStatus
 import com.gizwits.gizwifisdk.enumration.GizWifiErrorCode
 import java.util.concurrent.ConcurrentHashMap
-import android.app.NotificationManager
-
-import android.app.NotificationChannel
-
-
-import android.app.PendingIntent
-
-import android.content.Intent
-import android.graphics.BitmapFactory
-import android.os.Build
-import androidx.core.app.NotificationCompat
 
 
 class DeviceActivity : GosControlModuleBaseActivity() {
@@ -44,10 +40,10 @@ class DeviceActivity : GosControlModuleBaseActivity() {
     private val arrange: MutableLiveData<Boolean> = MutableLiveData(true)
     private val wifi: MutableLiveData<Boolean> = MutableLiveData(true)
 
-    val alert:SingleLiveEvent<Boolean> = SingleLiveEvent()
+    val alert: SingleLiveEvent<Boolean> = SingleLiveEvent()
 
-    val alert1:SingleLiveEvent<Boolean> = SingleLiveEvent()
-    val alert2:SingleLiveEvent<Boolean> = SingleLiveEvent()
+    val alert1: SingleLiveEvent<Boolean> = SingleLiveEvent()
+    val alert2: SingleLiveEvent<Boolean> = SingleLiveEvent()
 
 
     private val binding: DeviceActivityDeviceBinding by lazy {
@@ -68,7 +64,7 @@ class DeviceActivity : GosControlModuleBaseActivity() {
             .setContentText("点击查看")
             .setSmallIcon(R.mipmap.ic_launcher)
             .setContentIntent(hangPendingIntent)
-           /* .setLargeIcon(BitmapFactory.decodeResource(resources, com.example.module_device.R.mipmap.head))*/
+            /* .setLargeIcon(BitmapFactory.decodeResource(resources, com.example.module_device.R.mipmap.head))*/
             .setAutoCancel(true)
             .build()
 
@@ -107,7 +103,7 @@ class DeviceActivity : GosControlModuleBaseActivity() {
                 binding.tvTemperature.text = "设备已断开"
             } else {
                 binding.tvTemperature.text = "温度$it℃"
-                alert.value = it >=40 || it<=20
+                alert.value = it >= 40 || it <= 20
             }
         }
 
@@ -189,9 +185,10 @@ class DeviceActivity : GosControlModuleBaseActivity() {
             }
         }*/
 
-        alert.observe(this){
-            if (it){
+        alert.observe(this) {
+            if (it) {
                 showNotification()
+                myToast("你的小宅温度异常了，请检查一下！")
             }
         }
 

@@ -15,7 +15,6 @@
             <option value="$PROJECT_DIR$/lib_base" />
             <option value="$PROJECT_DIR$/lib_common" />
             <option value="$PROJECT_DIR$/module_device" />
-            <option value="$PROJECT_DIR$/module_habit" />
             <option value="$PROJECT_DIR$/module_login" />
             <option value="$PROJECT_DIR$/module_main" />
           </set>
