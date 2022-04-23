@@ -4,4 +4,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="main_tv_skill_discorver">技能发现</string>
     <string name="main_tv_all"><![CDATA[全部>]]></string>
+    <string name="title_activity_map">MapActivity</string>
 </resources>

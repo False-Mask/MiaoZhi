@@ -33,7 +33,7 @@ class MainFragment : Fragment() {
     private val mainAdapter: MainAdapter by lazy {
         MainAdapter().apply {
             btnClickedListener = {
-                startActivity(Intent(requireActivity(),MapActivity::class.java))
+                startActivity(Intent(requireActivity(), MapActivity::class.java))
             }
         }
     }

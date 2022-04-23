@@ -15,7 +15,9 @@
     <application>
         <activity
             android:name=".ui.activity.MapActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="@string/title_activity_map"
+            android:theme="@style/Theme.MiaoZhi" />
 
         <meta-data
             android:name="com.amap.api.v2.apikey"
@@ -24,7 +26,7 @@
 
         <activity
             android:name=".ui.activity.MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>
