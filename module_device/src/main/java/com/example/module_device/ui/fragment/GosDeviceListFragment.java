@@ -42,7 +42,6 @@ import com.example.lib_common.common.GosDeviceModuleBaseFragment;
 import com.example.module_device.ui.activity.DeviceActivity;
 import com.example.module_device.ui.activity.GosAirlinkChooseDeviceWorkWiFiActivity;
 import com.example.module_device.ui.activity.GosChooseDeviceWorkWiFiActivity;
-import com.example.module_device.ui.activity.GosDeviceControlActivity;
 import com.example.lib_common.view.SlideListView2;
 import com.example.lib_common.view.VerticalSwipeRefreshLayout;
 import com.gizwits.gizwifisdk.api.GizDeviceSharing;

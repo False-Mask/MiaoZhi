@@ -4,8 +4,8 @@ if (isDebug.toBoolean() && name.matches("module_.+") ||
 } else {
     apply plugin: "com.android.library"
 }
-apply plugin: 'kotlin-kapt'
 apply plugin: "kotlin-android"
+apply plugin: 'kotlin-kapt'
 apply plugin: 'dagger.hilt.android.plugin'
 
 android {
@@ -18,7 +18,6 @@ android {
         }
     }*/
     compileSdk Android.CompileSdk
-    buildToolsVersion '30.0.3'
     //默认配置选项
     defaultConfig {
         if (isDebug.toBoolean() && name.matches("module_.+") || name.matches("app")) {

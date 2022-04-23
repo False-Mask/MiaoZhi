@@ -1,5 +1,6 @@
 package com.example.module_main.ui.fragment
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,6 +13,7 @@ import com.example.module_main.adapter.MainAdapter
 import com.example.module_main.adapter.PagerBannerAdapter
 import com.example.module_main.bean.MainSkill
 import com.example.module_main.databinding.MainFragmentMainBinding
+import com.example.module_main.ui.activity.MapActivity
 import com.example.module_main.view.BannerViewPager
 import com.example.module_main.view.BaseBannerAdapter
 
@@ -29,13 +31,17 @@ class MainFragment : Fragment() {
     }
 
     private val mainAdapter: MainAdapter by lazy {
-        MainAdapter()
+        MainAdapter().apply {
+            btnClickedListener = {
+                startActivity(Intent(requireActivity(),MapActivity::class.java))
+            }
+        }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         return binding.root
     }

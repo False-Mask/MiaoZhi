@@ -73,7 +73,7 @@ class MainActivity :
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val isConsumed: Boolean
         item ?: return false
         when (item.itemId) {
