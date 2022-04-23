@@ -3,21 +3,5 @@ dependencies {
     //swiperefreshLayout
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
 
-    api files('libs\\BLEasyConfig.jar')
-    api files('libs\\easylink2.0.jar')
-    api files('libs\\easylinkv3-0.2.6.jar')
-    api files('libs\\GizWifiSDK.jar')
-    //api files('libs\\jpush-android-2.1.5.jar')
-    api files('libs\\Lark7618SDK_noudp1606031910_0101.jar')
-    api files('libs\\libammsdk.jar')
-    api files('libs\\libForEElink.jar')
-    api files('libs\\LSFSK_1.0.jar')
-    api files('libs\\ltlink2.jar')
-    api files('libs\\mta-sdk-1.6.2.jar')
-    api files('libs\\OneShotConfig.jar')
-    api files('libs\\open_sdk_r5756.jar')
-    api files('libs\\pushservice-5.6.0.30.jar')
-    api files('libs\\simpleconfigwizardlib.jar')
-    api files('libs\\xUtils-2.6.14.jar')
-    api files('libs\\zxing.jar')
+    api fileTree(dir: "libs", include: ["*.jar"],exclude:["jpush-android-*.jar"])
 }
