@@ -8,6 +8,9 @@ apply plugin: "kotlin-android"
 apply plugin: 'kotlin-kapt'
 apply plugin: 'dagger.hilt.android.plugin'
 
+Properties p = new Properties()
+p.load(new File("$rootDir/key.properties").newDataInputStream())
+
 android {
     /*splits {
         abi {
@@ -23,6 +26,18 @@ android {
         if (isDebug.toBoolean() && name.matches("module_.+") || name.matches("app")) {
             applicationId "com.example.miaozhi"
         }
+
+        signingConfigs {
+
+            debug{
+                keyAlias = p["miaoZhikeyAlias"]
+                keyPassword = p["miaoZhikeyPassword"]
+                storePassword = p["miaoZhikeyPassword"]
+                storeFile = file("$rootDir/MiaoZhi.jks")
+            }
+
+        }
+
         minSdk Android.DefaultConfig.MinSdk
         targetSdk Android.DefaultConfig.TargetSdk
         versionCode Android.DefaultConfig.VersionCode
