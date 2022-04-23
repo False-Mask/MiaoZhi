@@ -45,13 +45,7 @@ class MainAdapter : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
         return skillList.size
     }
 
-    inner class ViewHolder(val binding: MainItemFuncBinding) : RecyclerView.ViewHolder(binding.root) {
-        val mainIvBg = binding.mainSivBg
-        val mainIvIcon = binding.mainIvAlarm
-        val mainTvTitle = binding.mainTvTitle
-        val mainTvContent = binding.mainTvContent
-        val manBtnTrt = binding.mainBtnTry
-    }
+    inner class ViewHolder(val binding: MainItemFuncBinding) : RecyclerView.ViewHolder(binding.root) {}
 
     fun setData(skillList: List<MainSkill>) {
         this.skillList = skillList
