@@ -1,5 +1,6 @@
 package com.example.lib_base.di.net
 
+import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -31,5 +32,10 @@ object NetModule {
         .baseUrl(BASE_URL)
         .client(client)
         .build()
+
+
+    @Provides
+    @Singleton
+    fun produceGson() = Gson()
 
 }

@@ -5,16 +5,27 @@ import android.content.pm.PackageManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.annotation.RequiresApi
 import com.amap.api.location.AMapLocation
 import com.amap.api.location.AMapLocationClient
 import com.amap.api.location.AMapLocationClientOption
 import com.amap.api.location.AMapLocationListener
+import com.amap.api.maps.CameraUpdateFactory
 import com.amap.api.maps.LocationSource
-import com.example.module_main.R
+import com.amap.api.maps.model.CameraPosition
+import com.amap.api.maps.model.LatLng
+import com.amap.api.maps.model.Marker
+import com.amap.api.maps.model.MarkerOptions
+import com.example.module_main.bean.ObjLocation
 import com.example.module_main.databinding.MainActivityMapBinding
+import com.google.gson.Gson
+import dagger.hilt.android.AndroidEntryPoint
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.WebSocket
+import okhttp3.WebSocketListener
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MapActivity : AppCompatActivity(), AMapLocationListener, LocationSource {
 
     private val binding by lazy {
@@ -28,7 +39,13 @@ class MapActivity : AppCompatActivity(), AMapLocationListener, LocationSource {
         Manifest.permission.WRITE_EXTERNAL_STORAGE
     )
 
-    private var locationChangeListener: LocationSource.OnLocationChangedListener? = null
+    @Inject
+    lateinit var okHttpClient: OkHttpClient
+
+    @Inject
+    lateinit var gson: Gson
+
+    private var myLocationChangeListener: LocationSource.OnLocationChangedListener? = null
 
     private var amapLocationClient: AMapLocationClient? = null
     private var aMapLocationClientOption: AMapLocationClientOption =
@@ -39,6 +56,9 @@ class MapActivity : AppCompatActivity(), AMapLocationListener, LocationSource {
             httpTimeOut = 20000
             isLocationCacheEnable = false
         }
+
+    private var obj: Marker? = null
+
 
     companion object {
         private val REQUEST_LOCATION = 2
@@ -66,8 +86,54 @@ class MapActivity : AppCompatActivity(), AMapLocationListener, LocationSource {
         }
 
         initLocation()
-
         initMap()
+        initWebSocket()
+
+        obj = binding.map.map.addMarker(
+            MarkerOptions()
+                .position(LatLng(0.0, 0.0))
+        )
+
+        updateCamera(LatLng(0.0, 0.0))
+
+    }
+
+    private fun updateCamera(latLng: LatLng) {
+        CameraUpdateFactory.newCameraPosition(
+            CameraPosition(latLng, 16f, 30f, 0f)
+        ).run {
+            binding.map.map.moveCamera(this)
+        }
+
+
+    }
+
+
+    inner class WebSocketConnector : WebSocketListener() {
+        override fun onMessage(webSocket: WebSocket, text: String) {
+            val location = gson.fromJson(text, ObjLocation::class.java)
+
+            obj?.remove()
+            runOnUiThread {
+                obj = binding.map.map.addMarker(
+                    MarkerOptions()
+                        .position(LatLng(location.latBle, location.lonBle))
+                )
+
+            }
+
+        }
+    }
+
+
+    private fun initWebSocket() {
+
+        okHttpClient.newWebSocket(
+            Request.Builder()
+                .url("ws://1.14.74.79:8089/huawei/iot/client/test")
+                .build(), WebSocketConnector()
+        )
+            .request()
 
     }
 
@@ -101,7 +167,6 @@ class MapActivity : AppCompatActivity(), AMapLocationListener, LocationSource {
             }
 
         amapLocationClient?.startLocation()
-
     }
 
 
@@ -127,12 +192,11 @@ class MapActivity : AppCompatActivity(), AMapLocationListener, LocationSource {
     }
 
     override fun onLocationChanged(p0: AMapLocation?) {
-        Log.e("TAG", p0.toString())
-        locationChangeListener?.onLocationChanged(p0)
+        myLocationChangeListener?.onLocationChanged(p0)
     }
 
     override fun activate(p0: LocationSource.OnLocationChangedListener?) {
-        locationChangeListener = p0
+        myLocationChangeListener = p0
         amapLocationClient?.startLocation()
     }
 
