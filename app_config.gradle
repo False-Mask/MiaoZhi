@@ -29,7 +29,14 @@ android {
 
         signingConfigs {
 
-            debug{
+            debug {
+                keyAlias = p["miaoZhikeyAlias"]
+                keyPassword = p["miaoZhikeyPassword"]
+                storePassword = p["miaoZhikeyPassword"]
+                storeFile = file("$rootDir/MiaoZhi.jks")
+            }
+
+            release {
                 keyAlias = p["miaoZhikeyAlias"]
                 keyPassword = p["miaoZhikeyPassword"]
                 storePassword = p["miaoZhikeyPassword"]

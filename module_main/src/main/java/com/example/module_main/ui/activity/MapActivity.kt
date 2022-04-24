@@ -11,10 +11,7 @@ import com.amap.api.location.AMapLocationClientOption
 import com.amap.api.location.AMapLocationListener
 import com.amap.api.maps.CameraUpdateFactory
 import com.amap.api.maps.LocationSource
-import com.amap.api.maps.model.CameraPosition
-import com.amap.api.maps.model.LatLng
-import com.amap.api.maps.model.Marker
-import com.amap.api.maps.model.MarkerOptions
+import com.amap.api.maps.model.*
 import com.example.module_main.bean.ObjLocation
 import com.example.module_main.databinding.MainActivityMapBinding
 import com.google.gson.Gson
@@ -32,7 +29,7 @@ class MapActivity : AppCompatActivity(), AMapLocationListener, LocationSource {
         MainActivityMapBinding.inflate(layoutInflater)
     }
 
-    val permissions = arrayOf(
+    private val permissions = arrayOf(
         Manifest.permission.ACCESS_COARSE_LOCATION,
         Manifest.permission.ACCESS_FINE_LOCATION,
         Manifest.permission.READ_PHONE_STATE,
@@ -94,7 +91,7 @@ class MapActivity : AppCompatActivity(), AMapLocationListener, LocationSource {
                 .position(LatLng(0.0, 0.0))
         )
 
-        updateCamera(LatLng(0.0, 0.0))
+        //updateCamera(LatLng(0.0, 0.0))
 
     }
 
@@ -141,6 +138,9 @@ class MapActivity : AppCompatActivity(), AMapLocationListener, LocationSource {
         binding.map.map.apply {
             setLocationSource(this@MapActivity)
             isMyLocationEnabled = true
+            myLocationStyle = MyLocationStyle().apply {
+                myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATE)
+            }
         }
     }
 
@@ -165,8 +165,6 @@ class MapActivity : AppCompatActivity(), AMapLocationListener, LocationSource {
                 setLocationOption(aMapLocationClientOption)
                 setLocationListener(this@MapActivity)
             }
-
-        amapLocationClient?.startLocation()
     }
 
 
