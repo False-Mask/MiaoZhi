@@ -9,7 +9,6 @@ import com.amap.api.location.AMapLocation
 import com.amap.api.location.AMapLocationClient
 import com.amap.api.location.AMapLocationClientOption
 import com.amap.api.location.AMapLocationListener
-import com.amap.api.maps.CameraUpdateFactory
 import com.amap.api.maps.LocationSource
 import com.amap.api.maps.model.*
 import com.example.module_main.bean.ObjLocation
@@ -23,11 +22,9 @@ import okhttp3.WebSocketListener
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MapActivity : AppCompatActivity(), AMapLocationListener, LocationSource {
+class MapActivity : AppCompatActivity() {
 
-    private val binding by lazy {
-        MainActivityMapBinding.inflate(layoutInflater)
-    }
+    private val binding by lazy { MainActivityMapBinding.inflate(layoutInflater) }
 
     private val permissions = arrayOf(
         Manifest.permission.ACCESS_COARSE_LOCATION,
@@ -42,17 +39,17 @@ class MapActivity : AppCompatActivity(), AMapLocationListener, LocationSource {
     @Inject
     lateinit var gson: Gson
 
-    private var myLocationChangeListener: LocationSource.OnLocationChangedListener? = null
 
     private var amapLocationClient: AMapLocationClient? = null
-    private var aMapLocationClientOption: AMapLocationClientOption =
-        AMapLocationClientOption().apply {
+    private var aMapLocationClientOption: AMapLocationClientOption = AMapLocationClientOption().apply {
             locationMode = AMapLocationClientOption.AMapLocationMode.Hight_Accuracy
             isOnceLocationLatest = true
             isNeedAddress = true
             httpTimeOut = 20000
             isLocationCacheEnable = false
         }
+
+    private val locationHelper = LocationHelper()
 
     private var obj: Marker? = null
 
@@ -68,7 +65,6 @@ class MapActivity : AppCompatActivity(), AMapLocationListener, LocationSource {
 
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        binding.map.onCreate(savedInstanceState)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             val filter = permissions.map {
@@ -86,42 +82,10 @@ class MapActivity : AppCompatActivity(), AMapLocationListener, LocationSource {
         initMap()
         initWebSocket()
 
-        obj = binding.map.map.addMarker(
-            MarkerOptions()
-                .position(LatLng(0.0, 0.0))
-        )
-
-        //updateCamera(LatLng(0.0, 0.0))
-
-    }
-
-    private fun updateCamera(latLng: LatLng) {
-        CameraUpdateFactory.newCameraPosition(
-            CameraPosition(latLng, 16f, 30f, 0f)
-        ).run {
-            binding.map.map.moveCamera(this)
-        }
+        binding.map.onCreate(savedInstanceState)
 
 
     }
-
-
-    inner class WebSocketConnector : WebSocketListener() {
-        override fun onMessage(webSocket: WebSocket, text: String) {
-            val location = gson.fromJson(text, ObjLocation::class.java)
-
-            obj?.remove()
-            runOnUiThread {
-                obj = binding.map.map.addMarker(
-                    MarkerOptions()
-                        .position(LatLng(location.latBle, location.lonBle))
-                )
-
-            }
-
-        }
-    }
-
 
     private fun initWebSocket() {
 
@@ -136,7 +100,7 @@ class MapActivity : AppCompatActivity(), AMapLocationListener, LocationSource {
 
     private fun initMap() {
         binding.map.map.apply {
-            setLocationSource(this@MapActivity)
+            setLocationSource(locationHelper)
             isMyLocationEnabled = true
             myLocationStyle = MyLocationStyle().apply {
                 myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATE)
@@ -159,11 +123,10 @@ class MapActivity : AppCompatActivity(), AMapLocationListener, LocationSource {
     }
 
     private fun initLocation() {
-
         amapLocationClient = AMapLocationClient(application.applicationContext)
             .apply {
                 setLocationOption(aMapLocationClientOption)
-                setLocationListener(this@MapActivity)
+                setLocationListener(locationHelper)
             }
     }
 
@@ -189,18 +152,39 @@ class MapActivity : AppCompatActivity(), AMapLocationListener, LocationSource {
         binding.map.onSaveInstanceState(outState)
     }
 
-    override fun onLocationChanged(p0: AMapLocation?) {
-        myLocationChangeListener?.onLocationChanged(p0)
+
+    inner class LocationHelper : LocationSource, AMapLocationListener {
+
+        private var myLocationChangeListener: LocationSource.OnLocationChangedListener? = null
+
+        override fun activate(p0: LocationSource.OnLocationChangedListener?) {
+            myLocationChangeListener = p0
+            amapLocationClient?.startLocation()
+        }
+
+        override fun deactivate() {
+            amapLocationClient?.stopLocation()
+            amapLocationClient?.onDestroy()
+        }
+
+        override fun onLocationChanged(p0: AMapLocation?) {
+            myLocationChangeListener?.onLocationChanged(p0)
+        }
     }
 
-    override fun activate(p0: LocationSource.OnLocationChangedListener?) {
-        myLocationChangeListener = p0
-        amapLocationClient?.startLocation()
-    }
+    inner class WebSocketConnector : WebSocketListener() {
+        override fun onMessage(webSocket: WebSocket, text: String) {
+            val location = gson.fromJson(text, ObjLocation::class.java)
 
-    override fun deactivate() {
-        amapLocationClient?.stopLocation()
-        amapLocationClient?.onDestroy()
+            obj?.remove()
+            runOnUiThread {
+                obj = binding.map.map.addMarker(
+                    MarkerOptions()
+                        .position(LatLng(location.latBle, location.lonBle))
+                )
+            }
+
+        }
     }
 
 }
