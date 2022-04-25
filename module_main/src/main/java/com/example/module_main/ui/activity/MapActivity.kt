@@ -1,16 +1,30 @@
 package com.example.module_main.ui.activity
 
 import android.Manifest
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Window
+import android.view.WindowInsets
+import android.view.WindowManager
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import com.amap.api.location.AMapLocation
 import com.amap.api.location.AMapLocationClient
 import com.amap.api.location.AMapLocationClientOption
 import com.amap.api.location.AMapLocationListener
 import com.amap.api.maps.LocationSource
 import com.amap.api.maps.model.*
+import com.example.module_main.R
 import com.example.module_main.bean.ObjLocation
 import com.example.module_main.databinding.MainActivityMapBinding
 import com.google.gson.Gson
@@ -41,7 +55,8 @@ class MapActivity : AppCompatActivity() {
 
 
     private var amapLocationClient: AMapLocationClient? = null
-    private var aMapLocationClientOption: AMapLocationClientOption = AMapLocationClientOption().apply {
+    private var aMapLocationClientOption: AMapLocationClientOption =
+        AMapLocationClientOption().apply {
             locationMode = AMapLocationClientOption.AMapLocationMode.Hight_Accuracy
             isOnceLocationLatest = true
             isNeedAddress = true
@@ -53,6 +68,7 @@ class MapActivity : AppCompatActivity() {
 
     private var obj: Marker? = null
 
+    private lateinit var petName: String
 
     companion object {
         private val REQUEST_LOCATION = 2
@@ -66,6 +82,11 @@ class MapActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        windowInset()
+
+        binding.map.onCreate(savedInstanceState)
+
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             val filter = permissions.map {
                 val result = checkSelfPermission(it)
@@ -78,12 +99,71 @@ class MapActivity : AppCompatActivity() {
             if (filter.isNotEmpty()) requestPermissions(filter, REQUEST_LOCATION)
         }
 
+
+        intent.apply {
+            petName = extras?.get("PET_NAME") as String? ?: ""
+        }
         initLocation()
         initMap()
         initWebSocket()
 
-        binding.map.onCreate(savedInstanceState)
+        showNotification()
 
+
+    }
+
+    private fun windowInset() {
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        WindowCompat.getInsetsController(window, binding.root)?.apply {
+            isAppearanceLightStatusBars = true
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) hide(WindowInsetsCompat.Type.statusBars())
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            window.apply {
+                attributes = attributes.apply {
+                    layoutInDisplayCutoutMode =
+                        WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES
+                }
+            }
+        }
+    }
+
+    val channelId = "com.example.miaozhi"
+    val channelName = "pet"
+    val notificationId = 1
+
+
+    private fun showNotification() {
+
+        // Create the NotificationChannel, but only on API 26+ because
+        // the NotificationChannel class is new and not in the support library
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val importance = NotificationManager.IMPORTANCE_DEFAULT
+            val channel = NotificationChannel(channelId, channelName, importance)
+            // Register the channel with the system
+            val notificationManager: NotificationManager =
+                getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(channel)
+        }
+
+        val intent = Intent(this, MapActivity::class.java)
+        val pendingIntent: PendingIntent =
+            PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
+
+
+        val builder = NotificationCompat.Builder(this, channelId)
+            .setContentText("定位ing...")
+            .setContentText("正在为您定位您的$petName")
+            .setContentIntent(pendingIntent)
+            .setSmallIcon(R.drawable.ic_launcher)
+            .setAutoCancel(false)
+
+
+
+        with(NotificationManagerCompat.from(this)) {
+            notify(notificationId, builder.build())
+        }
 
     }
 

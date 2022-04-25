@@ -63,8 +63,24 @@
         <entry key="..\:/Code/Android/Up/MiaoZhi/module_main/src/main/res/layout/main_item_bvp_samll.xml" value="0.1" />
         <entry key="..\:/Code/Android/Up/MiaoZhi/module_main/src/main/res/layout/main_item_bvp_small_pager.xml" value="0.22175925925925927" />
         <entry key="..\:/Code/Android/Up/MiaoZhi/module_main/src/main/res/layout/main_item_func.xml" value="0.4" />
+        <entry key="..\:/Code/MiaoZhi/lib_common/src/main/res/layout/header_toolbar.xml" value="0.22826086956521738" />
+        <entry key="..\:/Code/MiaoZhi/module_device/src/main/res/layout/header_toolbar.xml" value="0.22826086956521738" />
+        <entry key="..\:/Code/MiaoZhi/module_login/src/main/res/drawable/shape_btn_round.xml" value="0.255" />
+        <entry key="..\:/Code/MiaoZhi/module_login/src/main/res/drawable/shape_et_round.xml" value="0.255" />
+        <entry key="..\:/Code/MiaoZhi/module_login/src/main/res/layout/header_toolbar.xml" value="0.22826086956521738" />
+        <entry key="..\:/Code/MiaoZhi/module_login/src/main/res/layout/login_activity_login.xml" value="0.17028985507246377" />
+        <entry key="..\:/Code/MiaoZhi/module_main/src/main/res/drawable/main_ic_user_file.xml" value="0.255" />
+        <entry key="..\:/Code/MiaoZhi/module_main/src/main/res/drawable/main_shape_btn_round.xml" value="0.255" />
         <entry key="..\:/Code/MiaoZhi/module_main/src/main/res/drawable/main_shape_btn_try.xml" value="0.255" />
+        <entry key="..\:/Code/MiaoZhi/module_main/src/main/res/drawable/main_shape_bvp_dot.xml" value="0.255" />
+        <entry key="..\:/Code/MiaoZhi/module_main/src/main/res/drawable/main_shape_bvp_dot_selected.xml" value="0.255" />
+        <entry key="..\:/Code/MiaoZhi/module_main/src/main/res/drawable/mine_shape_bvp_dot_selected.xml" value="0.255" />
+        <entry key="..\:/Code/MiaoZhi/module_main/src/main/res/drawable/shape_et_round.xml" value="0.255" />
+        <entry key="..\:/Code/MiaoZhi/module_main/src/main/res/layout/activity_name.xml" value="0.22826086956521738" />
+        <entry key="..\:/Code/MiaoZhi/module_main/src/main/res/layout/header_toolbar.xml" value="0.22826086956521738" />
+        <entry key="..\:/Code/MiaoZhi/module_main/src/main/res/layout/main_activity_main.xml" value="0.16" />
         <entry key="..\:/Code/MiaoZhi/module_main/src/main/res/layout/main_activity_map.xml" value="0.1" />
+        <entry key="..\:/Code/MiaoZhi/module_main/src/main/res/layout/main_activity_name.xml" value="0.22826086956521738" />
         <entry key="..\:/Code/MiaoZhi/module_main/src/main/res/layout/main_fragment_main.xml" value="0.22826086956521738" />
         <entry key="..\:/Code/MiaoZhi/module_main/src/main/res/layout/main_item_func.xml" value="0.22826086956521738" />
       </map>

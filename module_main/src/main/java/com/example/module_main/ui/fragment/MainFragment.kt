@@ -13,7 +13,7 @@ import com.example.module_main.adapter.MainAdapter
 import com.example.module_main.adapter.PagerBannerAdapter
 import com.example.module_main.bean.MainSkill
 import com.example.module_main.databinding.MainFragmentMainBinding
-import com.example.module_main.ui.activity.MapActivity
+import com.example.module_main.ui.activity.NameActivity
 import com.example.module_main.view.BannerViewPager
 import com.example.module_main.view.BaseBannerAdapter
 
@@ -33,7 +33,7 @@ class MainFragment : Fragment() {
     private val mainAdapter: MainAdapter by lazy {
         MainAdapter().apply {
             btnClickedListener = {
-                startActivity(Intent(requireActivity(), MapActivity::class.java))
+                startActivity(Intent(requireActivity(), NameActivity::class.java))
             }
         }
     }
