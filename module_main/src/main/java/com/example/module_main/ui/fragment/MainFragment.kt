@@ -13,10 +13,11 @@ import com.example.module_main.adapter.MainAdapter
 import com.example.module_main.adapter.PagerBannerAdapter
 import com.example.module_main.bean.MainSkill
 import com.example.module_main.databinding.MainFragmentMainBinding
+import com.example.module_main.ui.activity.MapActivity
 import com.example.module_main.ui.activity.NameActivity
 import com.example.module_main.view.BannerViewPager
 import com.example.module_main.view.BaseBannerAdapter
-
+import com.example.module_main.utils.*
 
 class MainFragment : Fragment() {
 
@@ -30,10 +31,27 @@ class MainFragment : Fragment() {
         MainFragmentMainBinding.inflate(layoutInflater)
     }
 
+    private fun spContent(): String = requireActivity().get("IS_SELECTED")
+
+
+    fun setContent(value: String) {
+        requireActivity().put("IS_SELECTED", value)
+    }
+
+    private fun petName(): String = requireActivity().get("PET_NAME")
+
+
     private val mainAdapter: MainAdapter by lazy {
         MainAdapter().apply {
             btnClickedListener = {
-                startActivity(Intent(requireActivity(), NameActivity::class.java))
+                if (spContent() != "true") {
+                    startActivity(Intent(requireActivity(), NameActivity::class.java))
+                    setContent(true.toString())
+                } else {
+                    Intent(requireContext(), MapActivity::class.java).apply {
+                        putExtra("PET_NAME", petName())
+                    }.run { startActivity(this) }
+                }
             }
         }
     }
@@ -48,7 +66,6 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         initView(view)
 
 
@@ -87,7 +104,8 @@ class MainFragment : Fragment() {
                         R.drawable.ic_banner_1,
                         R.drawable.ic_banner_2,
                         R.drawable.ic_banner_3,
-                        R.drawable.ic_banner_4)
+                        R.drawable.ic_banner_4
+                    )
                 )
 
         }
