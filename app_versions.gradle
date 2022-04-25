@@ -8,7 +8,7 @@ def DefaultConfig = [:]
 DefaultConfig.MinSdk = 21
 DefaultConfig.TargetSdk = 28
 DefaultConfig.VersionCode = 1
-DefaultConfig.VersionName = "1.0"
+DefaultConfig.VersionName = "1.0.1"
 Android.DefaultConfig = DefaultConfig
 
 //KotlinOptions
