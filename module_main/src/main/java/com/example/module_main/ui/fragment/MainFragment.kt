@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.module_main.R
@@ -44,13 +45,20 @@ class MainFragment : Fragment() {
     private val mainAdapter: MainAdapter by lazy {
         MainAdapter().apply {
             btnClickedListener = {
-                if (spContent() != "true") {
-                    startActivity(Intent(requireActivity(), NameActivity::class.java))
-                    setContent(true.toString())
-                } else {
-                    Intent(requireContext(), MapActivity::class.java).apply {
-                        putExtra("PET_NAME", petName())
-                    }.run { startActivity(this) }
+                when(it){
+                    5 ->{
+                        if (spContent() != "true") {
+                            startActivity(Intent(requireActivity(), NameActivity::class.java))
+                            setContent(true.toString())
+                        } else {
+                            Intent(requireContext(), MapActivity::class.java).apply {
+                                putExtra("PET_NAME", petName())
+                            }.run { startActivity(this) }
+                        }
+                    }
+                    else ->{
+                        Toast.makeText(requireContext(), "研发中~", Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
         }
@@ -145,7 +153,7 @@ class MainFragment : Fragment() {
             MainSkill(
                 Color.parseColor("#B767FE"),
                 R.drawable.main_ic_main_target,
-                "今日要事",
+                "硬件定位",
                 "看看今日的待办事项呢!"
             )
 
