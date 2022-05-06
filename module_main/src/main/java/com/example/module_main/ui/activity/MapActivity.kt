@@ -8,25 +8,28 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Window
-import android.view.WindowInsets
+import android.util.Log
 import android.view.WindowManager
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.WindowInsetsControllerCompat
 import com.amap.api.location.AMapLocation
 import com.amap.api.location.AMapLocationClient
 import com.amap.api.location.AMapLocationClientOption
 import com.amap.api.location.AMapLocationListener
 import com.amap.api.maps.LocationSource
 import com.amap.api.maps.model.*
+import com.amap.api.services.core.LatLonPoint
+import com.amap.api.services.route.*
 import com.example.module_main.R
 import com.example.module_main.bean.ObjLocation
 import com.example.module_main.databinding.MainActivityMapBinding
+import com.example.module_main.utils.AMapServicesUtil
+import com.example.module_main.utils.MapUtil
+import com.example.module_main.utils.WalkRouteOverlay
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 import okhttp3.OkHttpClient
@@ -36,7 +39,14 @@ import okhttp3.WebSocketListener
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MapActivity : AppCompatActivity() {
+class MapActivity : AppCompatActivity(), RouteSearch.OnRouteSearchListener {
+    /**
+     * 新增
+     */
+    lateinit var mStartPoint: LatLonPoint
+    lateinit var mEndPoint: LatLonPoint
+    lateinit var routeSearch: RouteSearch
+
 
     private val binding by lazy { MainActivityMapBinding.inflate(layoutInflater) }
 
@@ -106,11 +116,37 @@ class MapActivity : AppCompatActivity() {
         initLocation()
         initMap()
         initWebSocket()
-
+        initRoute()
         showNotification()
 
 
     }
+
+    /**
+     * 新增
+     */
+    private fun initRoute() {
+        routeSearch = RouteSearch(this)
+        routeSearch.setRouteSearchListener(this)
+    }
+
+    private fun startRouteSearch() {
+        binding.map.let {
+            it.map.addMarker(
+                MarkerOptions().position(AMapServicesUtil.convertToLatLng(mStartPoint))
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.amap_start_start))
+            )
+            it.map.addMarker(
+                MarkerOptions().position(AMapServicesUtil.convertToLatLng(mEndPoint))
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.amap_end_end))
+            )
+            val fromAndTo = RouteSearch.FromAndTo(mStartPoint, mEndPoint)
+            val query = RouteSearch.WalkRouteQuery(fromAndTo, RouteSearch.WalkDefault)
+            routeSearch.calculateWalkRouteAsyn(query)
+
+        }
+    }
+
 
     private fun windowInset() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
@@ -186,6 +222,9 @@ class MapActivity : AppCompatActivity() {
                 myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATE)
             }
         }
+        binding.floatBtn.setOnClickListener {
+            startRouteSearch()
+        }
     }
 
 
@@ -249,13 +288,18 @@ class MapActivity : AppCompatActivity() {
 
         override fun onLocationChanged(p0: AMapLocation?) {
             myLocationChangeListener?.onLocationChanged(p0)
+            mStartPoint =
+                AMapServicesUtil.convertToLatLonPoint(p0?.let { LatLng(it.latitude, it.longitude) })
+//            mEndPoint =
+//                AMapServicesUtil.convertToLatLonPoint(p0?.let { LatLng(it.latitude+0.1, it.longitude+0.1) })
         }
     }
 
     inner class WebSocketConnector : WebSocketListener() {
         override fun onMessage(webSocket: WebSocket, text: String) {
             val location = gson.fromJson(text, ObjLocation::class.java)
-
+            mEndPoint =
+                AMapServicesUtil.convertToLatLonPoint(LatLng(location.latBle, location.lonBle))
             obj?.remove()
             runOnUiThread {
                 obj = binding.map.map.addMarker(
@@ -265,6 +309,46 @@ class MapActivity : AppCompatActivity() {
             }
 
         }
+    }
+
+    override fun onBusRouteSearched(p0: BusRouteResult?, p1: Int) {
+//        TODO("Not yet implemented")
+    }
+
+    override fun onDriveRouteSearched(p0: DriveRouteResult?, p1: Int) {
+//        TODO("Not yet implemented")
+    }
+
+    override fun onWalkRouteSearched(p0: WalkRouteResult?, p1: Int) {
+        binding.map.map.clear()
+        if (p1 == com.amap.api.services.core.AMapException.CODE_AMAP_SUCCESS) {
+            if (p0 != null && p0.paths != null) {
+                if (p0.paths.size > 0) {
+                    val walkPath = p0.paths.get(0) ?: return
+                    val walkRouteOverlay =
+                        WalkRouteOverlay(
+                            this,
+                            binding.map.map,
+                            walkPath,
+                            p0.startPos,
+                            p0.targetPos
+                        ).apply {
+                            removeFromMap()
+                            addToMap()
+                            zoomToSpan()
+                        }
+                    val dis = walkPath.distance.toInt()
+                    val dur = walkPath.duration.toInt()
+                    val des =
+                        MapUtil.getFriendlyTime(dur) + "(" + MapUtil.getFriendlyLength(dis) + ")"
+
+                }
+            }
+        }
+    }
+
+    override fun onRideRouteSearched(p0: RideRouteResult?, p1: Int) {
+//        TODO("Not yet implemented")
     }
 
 }
